@@ -86,7 +86,6 @@ public class Subject {
 	@Column(name = "credits")
 	private int credits;
 	
-	
 	@ManyToMany(mappedBy = "subjects", fetch = FetchType.EAGER)
 	Set<Student> students;
 	
