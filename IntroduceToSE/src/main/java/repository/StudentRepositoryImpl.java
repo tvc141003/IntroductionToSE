@@ -19,7 +19,6 @@ public class StudentRepositoryImpl implements StudentRepository {
 	static {
 		SessionFactory factory = HibernateUtils.getSessionFactory();
 		session = factory.openSession();
-		
 		CriteriaBuilder cb = session.getCriteriaBuilder();
 		cr = cb.createQuery(Student.class);
 		root  = cr.from(Student.class);
@@ -49,7 +48,7 @@ public class StudentRepositoryImpl implements StudentRepository {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	
 	
 	
@@ -68,12 +67,6 @@ public class StudentRepositoryImpl implements StudentRepository {
 		}
 		return INSTANCE;
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 	

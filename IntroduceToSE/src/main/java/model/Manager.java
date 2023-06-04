@@ -21,3 +21,4 @@ public class Manager {
 	@Column(name = "gender")
 	private boolean gender;
 }
+
