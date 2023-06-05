@@ -5,9 +5,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -63,14 +62,18 @@ public class Student {
 	
 	
 	
-	public Set<Subject> getSubjects() {
-		return subjects;
+
+
+	public Set<Student_Subject> getStudent_subject() {
+		return student_subject;
 	}
 
-	public void setSubjects(Set<Subject> subjects) {
-		this.subjects = subjects;
+	public void setStudent_subject(Set<Student_Subject> student_subject) {
+		this.student_subject = student_subject;
 	}
-	
+
+
+
 
 
 	@Id
@@ -86,18 +89,9 @@ public class Student {
 	@Column(name = "gender")
 	private boolean gender;
 	
-	@ManyToMany
-	@JoinTable(
-			name = "student_subject",
-			joinColumns = {
-					@JoinColumn(name="student_id")
-			},
-			inverseJoinColumns = {
-					@JoinColumn(name="subject_id")
-			}
-			
-			)
-	Set<Subject> subjects;
+	@OneToMany(mappedBy = "student")
+	Set<Student_Subject> student_subject;
+	
 	
 	
 	

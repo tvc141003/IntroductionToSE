@@ -5,9 +5,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,18 +19,18 @@ public class Teacher {
 
 	public Teacher(String id, String firstName, String lastName, boolean gender) {
 		super();
-		this.id = id;
+		this.teacherId = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
 	}
 
 	public String getId() {
-		return id;
+		return teacherId;
 	}
 
 	public void setId(String id) {
-		this.id = id;
+		this.teacherId = id;
 	}
 
 	public String getFirstName() {
@@ -58,17 +57,10 @@ public class Teacher {
 		this.gender = gender;
 	}
 
-	public Set<Subject> getSubjects() {
-		return teacher_subjects;
-	}
-
-	public void setSubjects(Set<Subject> subjects) {
-		this.teacher_subjects = subjects;
-	}
 
 	@Id
 	@Column(name = "teacher_id")
-	private String id;
+	private String teacherId;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -79,13 +71,8 @@ public class Teacher {
 	@Column(name = "gender")
 	private boolean gender;
 
-	
-	 @ManyToMany
-	 @JoinTable( name = "teacher_subject", joinColumns = {
-	 @JoinColumn(name="teacher_id") }, inverseJoinColumns = {
-	 @JoinColumn(name="subject_id") }
-
-	  ) Set<Subject> teacher_subjects;
+	@OneToMany(mappedBy = "teacher")
+	Set<Teacher_Subject> teacher_subject ;
 	
 
 }

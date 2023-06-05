@@ -1,7 +1,11 @@
 package main;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -9,8 +13,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import model.Student;
+import model.Student_Subject;
 import model.Subject;
 import model.Teacher;
+import repository.StudentRepositoryImpl;
 import utils.HibernateUtils;
 
 public class Main {
@@ -22,29 +28,24 @@ public class Main {
 		Transaction tx = session.beginTransaction();
 		
 		
-		Student student = new Student("STU01", "Le", "Trong", true);
+		StudentRepositoryImpl stuRepos = StudentRepositoryImpl.getInstance();
 		
-		Teacher teacher = new Teacher("TEA01", "Tran", "Quang", true);
+		List<Student> list = stuRepos.findAll();
 		
-		
-		Subject subject = new Subject("SUB01", "Software Enginerring", 4);
-		
-		Subject subject2 = new Subject("SUB02", "Data Science", 4);
-		
-		Set<Subject> set = new HashSet<Subject>();
-		set.add(subject) ;
-		set.add(subject2);
-		
-		student.setSubjects(set);
-		teacher.setSubjects(set);
+		Student student = list.get(0);
 		
 		
+		Set<Student_Subject> set = student.getStudent_subject();
+		
+		for (Student_Subject s : set) {
+			System.out.println(s.getSubject().getName());
+		}
 		
 		
-		session.save(student);
-		session.save(subject);
-		session.save(subject2);
-		session.save(teacher);
+	
+
+		
+	
 		
 		
 		try {
@@ -54,7 +55,6 @@ public class Main {
 			tx.rollback();
 			e.printStackTrace();
 		}
-		
-	}
 	
-}
+	
+}}

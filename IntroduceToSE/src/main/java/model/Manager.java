@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Manager {
 	@Id
 	@Column(name = "manager_id")
-	private String id;
+	private String managerId;
 	
 	@Column(name ="first_name")
 	private String firstName;
@@ -21,3 +21,4 @@ public class Manager {
 	@Column(name = "gender")
 	private boolean gender;
 }
+
