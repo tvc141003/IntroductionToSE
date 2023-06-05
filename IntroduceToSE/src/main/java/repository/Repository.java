@@ -11,4 +11,7 @@ public interface Repository <T>{
 	
 	void remove(String id);
 	
+	T findByName(String name);
+	
+	
 }
