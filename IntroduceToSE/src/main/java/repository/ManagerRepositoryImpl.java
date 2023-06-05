@@ -6,6 +6,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
+import model.Manager;
 import model.Student;
 import utils.HibernateUtils;
 

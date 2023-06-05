@@ -7,6 +7,7 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import model.Student;
+import model.Teacher;
 import utils.HibernateUtils;
 
 
