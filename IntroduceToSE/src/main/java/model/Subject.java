@@ -54,7 +54,27 @@ public class Subject {
 		this.name = name;
 		this.credits = credits;
 	}
+	
 
+	public Set<Student> getStudents() {
+		return students;
+	}
+
+
+	public void setStudents(Set<Student> students) {
+		this.students = students;
+	}
+
+
+	public Set<Teacher> getTeachers() {
+		return teachers;
+	}
+
+
+	public void setTeachers(Set<Teacher> teachers) {
+		this.teachers = teachers;
+	}
+	
 
 	@Id
 	@Column(name = "subject_id")
@@ -66,8 +86,10 @@ public class Subject {
 	@Column(name = "credits")
 	private int credits;
 	
-	
 	@ManyToMany(mappedBy = "subjects", fetch = FetchType.EAGER)
 	Set<Student> students;
+	
+	@ManyToMany(mappedBy = "teacher_subjects", fetch = FetchType.EAGER)
+	Set<Teacher> teachers;
 	
 }
