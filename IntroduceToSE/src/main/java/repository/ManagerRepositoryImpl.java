@@ -10,15 +10,8 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-<<<<<<< HEAD
-import model.Manager;
-import model.Student;
-=======
-
-
 import model.Manager;
 
->>>>>>> ec53dc40235a3210072e9b4a7919996219ea5458
 import utils.HibernateUtils;
 
 

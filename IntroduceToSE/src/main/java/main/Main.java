@@ -27,25 +27,12 @@ public class Main {
 		
 		Transaction tx = session.beginTransaction();
 		
+		Student std = new Student("STU05", "Le", "Nguyen", true);
 		
-		StudentRepositoryImpl stuRepos = StudentRepositoryImpl.getInstance();
+		Subject sub = new Subject("SUB09", "Machine learning", 4);
 		
-		List<Student> list = stuRepos.findAll();
-		
-		Student student = list.get(0);
-		
-		
-		Set<Student_Subject> set = student.getStudent_subject();
-		
-		for (Student_Subject s : set) {
-			System.out.println(s.getSubject().getName());
-		}
-		
-		
-	
-
-		
-	
+		session.save(std);
+		session.save(sub);
 		
 		
 		try {

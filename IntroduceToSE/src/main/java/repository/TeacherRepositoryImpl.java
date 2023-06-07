@@ -9,12 +9,9 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-<<<<<<< HEAD
-import model.Student;
-=======
 
->>>>>>> ec53dc40235a3210072e9b4a7919996219ea5458
 import model.Teacher;
+
 import utils.HibernateUtils;
 
 
