@@ -4,9 +4,12 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -15,13 +18,14 @@ public class Student {
 	
 	
 	
-	public Student() {
-		
-		
-	}
 
-	public String getStudentId() {
-		return studentId;
+	public Student(String studentId, String firstName, String lastName, boolean gender, String email) {
+		super();
+		this.studentId = studentId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gender = gender;
+		this.email = email;
 	}
 
 	public Student(String studentId, String firstName, String lastName, boolean gender) {
@@ -30,6 +34,15 @@ public class Student {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
+	}
+	
+	public Student() {
+		
+		
+	}
+
+	public String getStudentId() {
+		return studentId;
 	}
 
 	public void setStudentId(String studentId) {
@@ -61,15 +74,24 @@ public class Student {
 	}
 	
 	
-	
-
-
 	public Set<Student_Subject> getStudent_subject() {
 		return student_subject;
 	}
 
 	public void setStudent_subject(Set<Student_Subject> student_subject) {
 		this.student_subject = student_subject;
+	}
+
+
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 
@@ -89,9 +111,15 @@ public class Student {
 	@Column(name = "gender")
 	private boolean gender;
 	
-	@OneToMany(mappedBy = "student")
+	@Column(name = "email",unique = true)
+	private String email ;
+	
+	@OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
 	Set<Student_Subject> student_subject;
 	
+	@OneToOne( mappedBy = "student")
+	//@JoinColumn(name = "abc_id")
+	private StudentAccount account ;
 	
 	
 	

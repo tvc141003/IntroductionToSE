@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 
 import javax.persistence.OneToMany;
@@ -16,7 +17,14 @@ public class Teacher {
 	public Teacher() {
 
 	}
-
+	public Teacher(String teacherId, String firstName, String lastName, boolean gender, String email) {
+		super();
+		this.teacherId = teacherId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gender = gender;
+		this.email = email;
+	}
 	public Teacher(String id, String firstName, String lastName, boolean gender) {
 		super();
 		this.teacherId = id;
@@ -70,9 +78,38 @@ public class Teacher {
 
 	@Column(name = "gender")
 	private boolean gender;
+	
+	@Column(name = "email")
+	private String email ;
 
-	@OneToMany(mappedBy = "teacher")
+	@OneToMany(mappedBy = "teacher",fetch = FetchType.EAGER)
 	Set<Teacher_Subject> teacher_subject ;
+
+
+
+	public String getTeacherId() {
+		return teacherId;
+	}
+
+	public void setTeacherId(String teacherId) {
+		this.teacherId = teacherId;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Set<Teacher_Subject> getTeacher_subject() {
+		return teacher_subject;
+	}
+
+	public void setTeacher_subject(Set<Teacher_Subject> teacher_subject) {
+		this.teacher_subject = teacher_subject;
+	}
 	
 
 }

@@ -1,11 +1,7 @@
 package main;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
+
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -13,10 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import model.Student;
-import model.Student_Subject;
-import model.Subject;
-import model.Teacher;
-import repository.StudentRepositoryImpl;
+
 import utils.HibernateUtils;
 
 public class Main {
@@ -28,19 +21,13 @@ public class Main {
 		Transaction tx = session.beginTransaction();
 		
 		
-		StudentRepositoryImpl stuRepos = StudentRepositoryImpl.getInstance();
+		Student stu = new Student("STU01", "Le", "Trong", true, "LHT@gmail.com");
 		
-		List<Student> list = stuRepos.findAll();
+	//	StudentAccount account = new StudentAccount(stu, "123456");
 		
-		Student student = list.get(0);
-		
-		
-		Set<Student_Subject> set = student.getStudent_subject();
-		
-		for (Student_Subject s : set) {
-			System.out.println(s.getSubject().getName());
-		}
-		
+		session.save(stu);
+	//	session.save(account);
+				
 		
 	
 
