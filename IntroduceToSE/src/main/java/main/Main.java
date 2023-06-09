@@ -8,9 +8,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import model.Student;
 
 import utils.HibernateUtils;
+import utils.MailUtils;
 
 public class Main {
 	
@@ -21,16 +21,9 @@ public class Main {
 		Transaction tx = session.beginTransaction();
 		
 		
-		Student stu = new Student("STU01", "Le", "Trong", true, "LHT@gmail.com");
+		MailUtils mailUtils = MailUtils.getInstance();
 		
-	//	StudentAccount account = new StudentAccount(stu, "123456");
-		
-		session.save(stu);
-	//	session.save(account);
-				
-		
-	
-
+		mailUtils.sendEmail("lehuutrong141@gmail.com", "hello world");
 		
 	
 		

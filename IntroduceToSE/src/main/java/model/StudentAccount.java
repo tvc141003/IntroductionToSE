@@ -20,9 +20,9 @@ public class StudentAccount {
 	private long id;
 	
 	
-	 @OneToOne(fetch = FetchType.EAGER)
-	 @JoinColumn(name = "student_id")
-	 private Student student;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "student_id")
+	private Student student;
 	 
 	
 	@Column(name = "password")

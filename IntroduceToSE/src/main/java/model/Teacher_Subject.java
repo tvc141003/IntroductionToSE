@@ -22,7 +22,7 @@ public class Teacher_Subject {
 		
 	}
 	
-	public Teacher_Subject(Teacher teacher, Subject subject_id, int semester, String className) {
+	public Teacher_Subject(Teacher teacher, Subject subject_id, String semester, String className) {
 		super();
 		this.teacher = teacher;
 		this.subject_id = subject_id;
@@ -53,11 +53,11 @@ public class Teacher_Subject {
 		this.subject_id = subject_id;
 	}
 
-	public int getSemester() {
+	public String getSemester() {
 		return semester;
 	}
 
-	public void setSemester(int semester) {
+	public void setSemester(String semester) {
 		this.semester = semester;
 	}
 
@@ -82,7 +82,7 @@ public class Teacher_Subject {
 	@JoinColumn(name = "subject_id")
 	Subject subject_id;
 	
-	int semester;
+	String semester;
 	
 	String className;
 }

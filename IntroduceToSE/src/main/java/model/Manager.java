@@ -2,7 +2,10 @@ package model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import javax.persistence.Id;
+
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -61,6 +64,9 @@ public class Manager {
 	private boolean gender;
 	@Column(name = "email")
 	private String email;
+	
+	@OneToOne(mappedBy = "manager")
+	private ManagerAccount account;
 	
 }
 

@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -85,7 +86,8 @@ public class Teacher {
 	@OneToMany(mappedBy = "teacher",fetch = FetchType.EAGER)
 	Set<Teacher_Subject> teacher_subject ;
 
-
+	@OneToOne(mappedBy = "teacher")
+	private TeacherAccount account;
 
 	public String getTeacherId() {
 		return teacherId;

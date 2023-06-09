@@ -21,6 +21,8 @@
     <mapping class = "model.Manager"/>
  
   	<mapping class = "model.StudentAccount"/>
+  	<mapping class ="model.TeacherAccount"/>
+  	<mapping class ="model.ManagerAccount"/>
      	
 </session-factory>
      

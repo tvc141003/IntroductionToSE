@@ -24,14 +24,32 @@
       <scope>test</scope>
     </dependency>
     
-   		 
+   
   	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
-<dependency>
-    <groupId>org.hibernate</groupId>
-    <artifactId>hibernate-core</artifactId>
-    <version>5.6.15.Final</version>
-</dependency>
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-core</artifactId>
+		    <version>5.6.15.Final</version>
+		</dependency>
+			<!-- Email -->
+		<!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
 
+		<!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>javax.mail-api</artifactId>
+		    <version>1.6.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+		<dependency>
+		    <groupId>com.sun.mail</groupId>
+		    <artifactId>javax.mail</artifactId>
+		    <version>1.6.0</version>
+		</dependency>
+
+				<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		
 		<dependency>
     <groupId>org.hibernate.javax.persistence</groupId>
