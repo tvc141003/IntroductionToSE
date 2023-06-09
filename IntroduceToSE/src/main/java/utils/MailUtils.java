@@ -53,9 +53,9 @@ public class MailUtils {
 			 // nguoi nhan
 			 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(receiveEmail, false));
 			 // set tieu de 
-			 message.setSubject("Mail Subject");
+			 message.setSubject("Reset password group 108");
 			 //
-			 message.setContent( text,"text/plain");
+			 message.setContent( text,"text/html");
 		
 			 	
 			
