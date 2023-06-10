@@ -21,7 +21,7 @@ public class StudentAccount {
 	
 	
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "student_id")
+	@JoinColumn(name = "student_id", unique = true)
 	private Student student;
 	 
 	

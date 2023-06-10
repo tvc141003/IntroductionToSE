@@ -15,6 +15,8 @@ import javax.persistence.Table;
 public class ManagerAccount {
 	
 	
+	
+	
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

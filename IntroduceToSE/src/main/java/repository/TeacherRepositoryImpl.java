@@ -76,6 +76,7 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Teacher findByName(String name) {
+		
 		Predicate inFirstName = cb.like(((Expression)root.get("first_name")),"%" + name +"%");
 		Predicate inLastName = cb.like(((Expression)root.get("last_name")),"%" + name +"%") ;
 		
