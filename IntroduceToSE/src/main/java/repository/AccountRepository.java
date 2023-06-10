@@ -12,5 +12,4 @@ public interface AccountRepository<T> {
 	
 	void remove(T origin);
 	
-	
 }

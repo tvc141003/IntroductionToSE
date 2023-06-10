@@ -12,6 +12,12 @@ import javax.persistence.Table;
 @Table(name = "manager")
 public class Manager {
 	
+	public ManagerAccount getAccount() {
+		return account;
+	}
+	public void setAccount(ManagerAccount account) {
+		this.account = account;
+	}
 	public Manager(String managerId, String firstName, String lastName, boolean gender, String email) {
 		super();
 		this.managerId = managerId;
@@ -19,6 +25,9 @@ public class Manager {
 		this.lastName = lastName;
 		this.gender = gender;
 		this.email = email;
+	}
+	public Manager() {
+		super();
 	}
 	public String getManagerId() {
 		return managerId;

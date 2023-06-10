@@ -96,6 +96,18 @@ public class Student {
 
 
 
+	public StudentAccount getAccount() {
+		return account;
+	}
+
+	public void setAccount(StudentAccount account) {
+		this.account = account;
+	}
+
+
+
+
+
 	@Id
 	@Column(name = "student_id")
 	private String studentId;
@@ -115,7 +127,7 @@ public class Student {
 	@OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
 	Set<Student_Subject> student_subject;
 	
-	@OneToOne( mappedBy = "student")
+	@OneToOne( mappedBy = "student", fetch = FetchType.EAGER)
 	private StudentAccount account ;
 	
 	

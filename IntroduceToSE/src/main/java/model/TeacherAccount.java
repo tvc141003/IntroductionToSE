@@ -19,7 +19,7 @@ public class TeacherAccount {
 	private long id ;
 	
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "teacher_id")
+	@JoinColumn(name = "teacher_id", unique = true)
 	private Teacher teacher;
 	
 	
