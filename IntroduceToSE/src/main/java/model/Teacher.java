@@ -2,6 +2,7 @@ package model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -83,7 +84,7 @@ public class Teacher {
 	@Column(name = "email")
 	private String email ;
 
-	@OneToMany(mappedBy = "teacher",fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "teacher",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	Set<Teacher_Subject> teacher_subject ;
 
 	@OneToOne(mappedBy = "teacher")
@@ -111,6 +112,18 @@ public class Teacher {
 
 	public void setTeacher_subject(Set<Teacher_Subject> teacher_subject) {
 		this.teacher_subject = teacher_subject;
+	}
+	/**
+	 * @return the account
+	 */
+	public TeacherAccount getAccount() {
+		return account;
+	}
+	/**
+	 * @param account the account to set
+	 */
+	public void setAccount(TeacherAccount account) {
+		this.account = account;
 	}
 	
 

@@ -12,6 +12,7 @@ public interface TeacherAccountRepository  extends AccountRepository<TeacherAcco
 
 	void save(TeacherAccount origin);
 
-	void remove(TeacherAccount origin);
+	void remove(String username_id);
 	
+	TeacherAccount findByUsernameId(String username_id);
 }

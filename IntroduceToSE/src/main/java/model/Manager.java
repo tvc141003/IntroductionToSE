@@ -1,5 +1,6 @@
 package model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -8,10 +9,17 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "manager")
 public class Manager {
 	
+	public ManagerAccount getAccount() {
+		return account;
+	}
+	public void setAccount(ManagerAccount account) {
+		this.account = account;
+	}
 	public Manager(String managerId, String firstName, String lastName, boolean gender, String email) {
 		super();
 		this.managerId = managerId;
@@ -19,6 +27,9 @@ public class Manager {
 		this.lastName = lastName;
 		this.gender = gender;
 		this.email = email;
+	}
+	public Manager() {
+		super();
 	}
 	public String getManagerId() {
 		return managerId;
@@ -65,7 +76,7 @@ public class Manager {
 	@Column(name = "email")
 	private String email;
 	
-	@OneToOne(mappedBy = "manager")
+	@OneToOne(mappedBy = "manager",cascade =  CascadeType.ALL,orphanRemoval = true)
 	private ManagerAccount account;
 	
 }

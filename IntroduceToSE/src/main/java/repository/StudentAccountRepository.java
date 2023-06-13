@@ -12,6 +12,8 @@ public interface StudentAccountRepository extends AccountRepository<StudentAccou
 
 	void save(StudentAccount origin);
 
-	void remove(StudentAccount origin);
+	void remove(String username_id);
+	
+	StudentAccount findByUsernameId(String username_id);
 	
 }

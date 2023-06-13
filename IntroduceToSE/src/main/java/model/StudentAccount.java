@@ -1,5 +1,6 @@
 package model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,7 +21,49 @@ public class StudentAccount {
 	private long id;
 	
 	
-	@OneToOne(fetch = FetchType.EAGER)
+	public long getId() {
+		return id;
+	}
+
+
+	public StudentAccount() {
+		super();
+	}
+
+
+	public StudentAccount(Student student, String password) {
+		super();
+		this.student = student;
+		this.password = password;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	public Student getStudent() {
+		return student;
+	}
+
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	@OneToOne(fetch = FetchType.EAGER,cascade =  CascadeType.ALL,orphanRemoval = true)
 	@JoinColumn(name = "student_id", unique = true)
 	private Student student;
 	 

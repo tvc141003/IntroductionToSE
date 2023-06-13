@@ -7,7 +7,10 @@
 
    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.password">123456aA@</property>
+
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test_3</property>
+
+
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
     <property name="hibernate.hbm2ddl.auto">create-drop</property>

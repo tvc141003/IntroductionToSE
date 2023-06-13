@@ -12,7 +12,9 @@ public interface ManagerAccountRepository extends AccountRepository<ManagerAccou
 
 	void save(ManagerAccount origin);
 
-	void remove(ManagerAccount origin);
+	ManagerAccount findByUsernameId(String username_id) ;
+
+	void remove(String username_id) ;
 	
 }
 
