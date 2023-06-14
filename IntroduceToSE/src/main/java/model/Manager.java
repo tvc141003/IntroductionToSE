@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "manager")
-public class Manager {
+public class Manager{
 	
 	public ManagerAccount getAccount() {
 		return account;
@@ -73,7 +73,7 @@ public class Manager {
 	
 	@Column(name = "gender")
 	private boolean gender;
-	@Column(name = "email")
+	@Column(name = "email",unique = true)
 	private String email;
 	
 	@OneToOne(mappedBy = "manager",cascade =  CascadeType.ALL,orphanRemoval = true)

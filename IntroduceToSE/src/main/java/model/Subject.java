@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name  = "subject")
-public class Subject {
+public class Subject{
 
 	
 	

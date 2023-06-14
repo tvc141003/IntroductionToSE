@@ -12,6 +12,8 @@ import model.Manager;
 import model.ManagerAccount;
 import model.Student;
 import model.StudentAccount;
+import repository.AccountRepository;
+import repository.ManagerAccountRepository;
 import repository.ManagerAccountRepositoryImpl;
 import repository.ManagerRepositoryImpl;
 import repository.StudentAccountRepositoryImpl;
@@ -35,11 +37,8 @@ public class Main {
 		ManagerRepositoryImpl managerRepository = ManagerRepositoryImpl.getInstance();
 		
 		managerRepository.save(manager);
-		
-		
-		
-		
-		
+	
+	
 		
 	//	managerAccountRepository.remove(managerAccount.getManager().getManagerId());
 		//managerRepository.remove("M001");

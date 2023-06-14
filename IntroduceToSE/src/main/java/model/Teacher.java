@@ -81,7 +81,7 @@ public class Teacher {
 	@Column(name = "gender")
 	private boolean gender;
 	
-	@Column(name = "email")
+	@Column(name = "email",unique = true)
 	private String email ;
 
 	@OneToMany(mappedBy = "teacher",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
