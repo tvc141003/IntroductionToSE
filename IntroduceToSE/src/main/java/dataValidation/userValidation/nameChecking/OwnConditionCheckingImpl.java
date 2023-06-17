@@ -5,7 +5,7 @@ public class OwnConditionCheckingImpl  implements OwnConditionChecking{
 	@Override
 	public boolean check(String data) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }
