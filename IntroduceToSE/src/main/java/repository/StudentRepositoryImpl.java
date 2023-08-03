@@ -42,8 +42,6 @@ public class StudentRepositoryImpl implements StudentRepository {
 		}
 		session.close();
 		return list;
-		
-		
 	}
 
 	public Student findById(String id) {
