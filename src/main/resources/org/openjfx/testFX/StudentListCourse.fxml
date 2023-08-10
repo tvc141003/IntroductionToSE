@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.testFX.StudentListCourseController">
+   <top>
+      <AnchorPane prefHeight="127.0" prefWidth="1200.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" layoutX="30.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLONE PORTAL" AnchorPane.leftAnchor="30.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <Text layoutX="30.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student" AnchorPane.leftAnchor="32.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children></AnchorPane>
+   </top>
+   <bottom>
+      <AnchorPane prefHeight="10.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <left>
+      <AnchorPane prefHeight="562.0" prefWidth="1201.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickToBackHomeStudent" prefHeight="34.0" prefWidth="45.0">
+               <graphic>
+                  <FontAwesomeIcon glyphName="ARROW_CIRCLE_LEFT" size="2em" />
+               </graphic></Button>
+            <TableView fx:id="table" layoutX="86.0" layoutY="62.0" prefHeight="458.0" prefWidth="1000.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="86.0" AnchorPane.rightAnchor="114.0">
+               <columns>
+                  <TableColumn fx:id="Id" prefWidth="188.0000228881836" text="ID" />
+                  <TableColumn fx:id="NameCourse" prefWidth="263.9999694824219" text="Name Course" />
+                  <TableColumn fx:id="Teacher" prefWidth="286.4000244140625" text="Teacher" />
+                  <TableColumn fx:id="Schedule" prefWidth="260.0" text="Schedule" />
+               </columns></TableView>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

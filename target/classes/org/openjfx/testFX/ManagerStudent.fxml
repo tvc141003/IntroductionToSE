@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.testFX.ManagerStudentController">
+   <top>
+      <AnchorPane prefHeight="127.0" prefWidth="1200.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" layoutX="30.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLONE PORTAL" AnchorPane.leftAnchor="30.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <Text layoutX="30.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manager of portal" AnchorPane.leftAnchor="32.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children></AnchorPane>
+   </top>
+   <bottom>
+      <AnchorPane prefHeight="10.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <left>
+      <AnchorPane prefHeight="582.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField layoutX="894.0" layoutY="17.0" prefHeight="26.0" prefWidth="179.0" promptText="ID of Student" AnchorPane.rightAnchor="126.79999999999995" />
+            <Button graphicTextGap="6.0" layoutX="1087.0" layoutY="18.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="85.0" styleClass="buttonLogin" stylesheets="@styleLogin.css" text="Search" AnchorPane.rightAnchor="27.40000000000009">
+               <graphic>
+                  <FontAwesomeIcon glyphName="SEARCH" />
+               </graphic>
+            </Button>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickToBackHomeManager" prefHeight="34.0" prefWidth="45.0">
+               <graphic>
+                  <FontAwesomeIcon glyphName="ARROW_CIRCLE_LEFT" size="2em" />
+               </graphic></Button>
+            <AnchorPane layoutX="60.0" layoutY="90.0" prefHeight="425.0" prefWidth="294.0" style="-fx-border-color: #334db3; -fx-border-width: 2;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="90.0">
+               <children>
+                  <TextField fx:id="txtStudentID" layoutX="89.0" layoutY="31.0" prefHeight="26.0" prefWidth="190.0" />
+                  <Label layoutX="13.0" layoutY="34.0" text="Student ID:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtFirstName" layoutX="88.0" layoutY="99.0" prefHeight="26.0" prefWidth="190.0" />
+                  <Label layoutX="12.0" layoutY="102.0" prefHeight="20.0" prefWidth="70.0" text="First Name:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtLastName" layoutX="88.0" layoutY="164.0" prefHeight="26.0" prefWidth="190.0" />
+                  <Label layoutX="13.0" layoutY="167.0" prefHeight="20.0" prefWidth="69.0" text="Last Name:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="32.0" layoutY="218.0" prefHeight="20.0" prefWidth="50.0" text="Gender:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <CheckBox fx:id="cbGenderMale" layoutX="89.0" layoutY="219.0" mnemonicParsing="false" text="Male " />
+                  <CheckBox fx:id="cbxGenderFemale" layoutX="165.0" layoutY="219.0" mnemonicParsing="false" text="Female " />
+                  <TextField fx:id="txtEmail" layoutX="88.0" layoutY="275.0" prefHeight="26.0" prefWidth="190.0" />
+                  <Label layoutX="45.0" layoutY="278.0" prefHeight="20.0" prefWidth="37.0" text="Email:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnAddStudent" layoutX="31.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="60.0" text="Add" AnchorPane.bottomAnchor="36.0" AnchorPane.topAnchor="340.0" />
+                  <Button fx:id="btnUpdateStudent" layoutX="126.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="61.0" text="Update" AnchorPane.bottomAnchor="36.0" AnchorPane.topAnchor="340.0" />
+                  <Button fx:id="btnDeleteStudent" layoutX="221.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="57.0" text="Delete" AnchorPane.bottomAnchor="36.0" AnchorPane.topAnchor="340.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="367.0" layoutY="90.0" prefHeight="422.0" prefWidth="773.0" style="-fx-border-color: #334db3; -fx-border-width: 2;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="367.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="90.0">
+               <children>
+                  <TableView fx:id="tableStudent" layoutX="14.0" layoutY="14.0" onMouseClicked="#getItem" prefHeight="394.0" prefWidth="760.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                    <columns>
+                      <TableColumn prefWidth="38.399993896484375" text="No." />
+                      <TableColumn fx:id="colStudentId" prefWidth="143.99993896484375" text="Student Id" />
+                        <TableColumn fx:id="colFirstName" prefWidth="156.79998779296875" text="First Name" />
+                        <TableColumn fx:id="colLastName" prefWidth="127.20001220703125" text="Last Name" />
+                        <TableColumn fx:id="colGender" prefWidth="106.4000244140625" text="Gender" />
+                        <TableColumn fx:id="colEmail" prefWidth="165.79998779296875" text="Email" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>
