@@ -144,6 +144,22 @@ if (this.isExist(origin.getTeacher().getTeacherId()) == false) return;
 		}
 		
 	}
+	
+	private static  TeacherAccountRepositoryImpl INSTANCE ;
+	private TeacherAccountRepositoryImpl() {
+		
+	}
+	
+	
+	
+
+	public static TeacherAccountRepositoryImpl getInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new TeacherAccountRepositoryImpl();
+			
+		}
+		return INSTANCE;
+	}
 
 	
 	

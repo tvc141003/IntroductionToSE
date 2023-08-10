@@ -36,6 +36,14 @@ public class TeacherAccount {
 	}
 
 
+	public TeacherAccount(long id, Teacher teacher, String password) {
+		super();
+		this.id = id;
+		this.teacher = teacher;
+		this.password = password;
+	}
+
+
 	/**
 	 * @param id the id to set
 	 */

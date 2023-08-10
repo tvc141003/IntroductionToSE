@@ -39,8 +39,7 @@ public class Main {
 		 Transaction tx = session.beginTransaction();
 		 
 		 Manager manager = new Manager("M001", "Le", "Trong", true, "lehuutrong141@gmail.com"); 
-		 ManagerRepositoryImpl managerRepository =
-		 ManagerRepositoryImpl.getInstance();
+		 ManagerRepositoryImpl managerRepository = ManagerRepositoryImpl.getInstance();
 		 
 		 managerRepository.save(manager);
 		

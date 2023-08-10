@@ -24,19 +24,19 @@ import repository.StudentAccountRepositoryImpl;
 import repository.StudentRepositoryImpl;
 import utils.MailUtils;
 
-public class ManagerServiecImpl implements ManagerService {
-	private static  ManagerServiecImpl INSTANCE ;
+public class ManagerServiceImpl implements ManagerService {
+	private static  ManagerServiceImpl INSTANCE ;
 	private GmailFormCheckingImpl mail;
 	private GenderCheckingImpl gender;
 	private LengthCheckingImpl checkLengthName;
 	private LengthCheckingImpl checkLengthId;
-	private ManagerServiecImpl() {
+	private ManagerServiceImpl() {
 		
 	}
 	
-	public static ManagerServiecImpl getInstance() {
+	public static ManagerServiceImpl getInstance() {
 		if (INSTANCE == null) {
-			INSTANCE = new ManagerServiecImpl();
+			INSTANCE = new ManagerServiceImpl();
 		}
 		return INSTANCE;
 	}

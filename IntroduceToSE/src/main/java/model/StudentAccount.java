@@ -26,6 +26,14 @@ public class StudentAccount {
 	}
 
 
+	public StudentAccount(long id, Student student, String password) {
+		super();
+		this.id = id;
+		this.student = student;
+		this.password = password;
+	}
+
+
 	public StudentAccount() {
 		super();
 	}
