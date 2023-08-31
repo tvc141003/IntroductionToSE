@@ -41,15 +41,21 @@ public class LoginController {
     private ManagerServiceImpl manager;
     
     public LoginController() {
-    	manager = ManagerServiceImpl.getInstance();
+    	
+    }
+    public String getUserName()
+    {
+    	return this.userName.getText();
     }
     @FXML
     public void login(ActionEvent event) throws IOException {
+    	manager = ManagerServiceImpl.getInstance();
     	String username = userName.getText();
     	String password = passWord.getText();
+    	System.out.print("nguyen");
     	if(manager.login(username, password))
     	{
-    		Parent root = FXMLLoader.load(getClass().getResource("ManagerManagerAdd.fxml"));
+    		Parent root = FXMLLoader.load(getClass().getResource("menuHomeManager.fxml"));
         	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         	scene = new Scene(root);
         	stage.setScene(scene);
@@ -61,7 +67,14 @@ public class LoginController {
     	}
     }
 
-    
+    @FXML
+    public void forgotPassword(ActionEvent event) throws IOException {
+    	Parent root = FXMLLoader.load(getClass().getResource("forgotPassword.fxml"));
+    	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	scene = new Scene(root);
+    	stage.setScene(scene);
+    	stage.show();
+    }
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
     }

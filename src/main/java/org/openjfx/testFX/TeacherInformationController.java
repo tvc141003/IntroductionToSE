@@ -1,55 +1,106 @@
 package org.openjfx.testFX;
 
-import java.io.File;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
+import model.Student;
+import repository.StudentRepositoryImpl;
+import repository.TeacherRepositoryImpl;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.stage.DirectoryChooser;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.image.ImageView;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-import javafx.stage.FileChooser;
-import javafx.scene.Node;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TableColumn;
-public class TeacherInformationController {
+
+public class TeacherInformationController implements Initializable {
+
+	@FXML
+	private Stage stage;
+	private Scene scene;
+	private Parent root;
 	
     @FXML
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    @FXML
-    private ImageView avatar;
+    private Button btnUpdate;
 
     @FXML
-    private void chooseImage(ActionEvent event)throws IOException {
-    	//ImageView avatar = new ImageView();
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose Image");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
-        );
-        File selectedFile = fileChooser.showOpenDialog(null);
-        if (selectedFile != null) {
-            Image image = new Image(selectedFile.toURI().toString());
-            avatar.setImage(image);
-        }
-    }
+    private ToggleGroup gender;
 
     @FXML
-    public void onClickToBackStudentHome(ActionEvent event)throws IOException {
+    private RadioButton rbFemale;
+
+    @FXML
+    private RadioButton rbMale;
+
+    @FXML
+    private TextField txtEmail;
+
+    @FXML
+    private TextField txtFirstName;
+
+    @FXML
+    private TextField txtLastName;
+
+    @FXML
+    private TextField txtPassword;
+
+    @FXML
+    private TextField txtTeacherID;
+
+    @FXML
+    void onClickToBackStudentHome(ActionEvent event) throws IOException {
     	Parent root = FXMLLoader.load(getClass().getResource("menuHomeTeacher.fxml"));
     	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     	scene = new Scene(root);
     	stage.setScene(scene);
     	stage.show();
     }
+    @FXML
+    void handleButtonAction(ActionEvent event) {
+    	if(event.getSource() == btnUpdate)
+		{
+    		
+		}
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		showInformation();
+		
+	}
+	public void showInformation()
+	{
+		//LoginController ID = new LoginController();
+		//String studentID = ID.getUserName();
+		String teacherID = "TC001";
+		//s = StudentRepositoryImpl.getInstance().findById(studentID);
+		txtTeacherID.setText(TeacherRepositoryImpl.getInstance().findById(teacherID).getId());
+		txtFirstName.setText(TeacherRepositoryImpl.getInstance().findById(teacherID).getFirstName());
+		txtLastName.setText(TeacherRepositoryImpl.getInstance().findById(teacherID).getLastName());
+		txtEmail.setText(TeacherRepositoryImpl.getInstance().findById(teacherID).getEmail());
+		boolean isMale = TeacherRepositoryImpl.getInstance().findById(teacherID).isGender();
+        if (isMale) {
+            rbMale.setSelected(true);
+        } else {
+            rbFemale.setSelected(true);
+        }
+		//txtPassword.setText(StudentRepositoryImpl.getInstance().findById(studentID).getAccount().getPassword());
+	}
+	public void changeInformation()
+	{
+		//LoginController ID = new LoginController();
+		//String studentID = ID.getUserName();
+		//String studentID = "21127121";
+		//txtPassword.setText(StudentRepositoryImpl.getInstance().findById(studentID).getAccount().getPassword());
+	}
+
 }

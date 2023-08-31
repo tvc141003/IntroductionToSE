@@ -19,7 +19,7 @@ public interface ManagerService extends Service{
 	List<Subject> viewSubject(Subject subject, Object origin);
 	
 	/// manager service
-	boolean createManager(String managerId, String firstName, String lastName, boolean gender, String email, String passWord);
+	boolean createManager(Manager manager);
 	boolean deleteManager(Object origin);
 	boolean updateManager(String managerId, String firstName, String lastName, boolean gender, String email, String passWord);
 	
@@ -27,11 +27,11 @@ public interface ManagerService extends Service{
 	boolean deleteSubject(Object origin);
 	boolean updateSubject(String subjectId, String name, int credits );
 	
-	boolean createTeacher(String teacherId, String firstName, String lastName, boolean gender, String email, long id, String passWord);
+	boolean createTeacher(Teacher teacher);
 	boolean deleteTeacher(Object origin);
 	boolean updateTeacher(String teacherId, String firstName, String lastName, boolean gender, String email, String passWord);
 	
-	boolean createStudent(String studentId, String firstName, String lastName, boolean gender, String email, long id, String passWord);
+	boolean createStudent(Student student);
 	boolean deleteStudent(Object origin);
 	boolean updateStudent(String studentId, String firstName, String lastName, boolean gender, String email, String passWord);
 	

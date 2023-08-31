@@ -2,6 +2,7 @@ C:\Users\Admin\eclipse-workspace\testFX\src\main\java\dataValidation\package-inf
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\ManagerStudentController.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\dataValidation\userValidation\nameChecking\OwnConditionChecking.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\utils\HibernateUtils.java
+C:\Users\Admin\eclipse-workspace\testFX\src\main\java\service\StudentService.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\model\Teacher_Subject.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\repository\StudentAccountRepositoryImpl.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\model\package-info.java
@@ -11,7 +12,6 @@ C:\Users\Admin\eclipse-workspace\testFX\src\main\java\dataValidation\userValidat
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\TeacherScheduleController.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\repository\TeacherAccountRepository.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\repository\TeacherRepository.java
-C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\ManagerStudentUpdateController.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\utils\MailConfig.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\ParserFacrory\IParsable.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\utils\UserRegrexConfig.java
@@ -39,7 +39,6 @@ C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\Manager
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\repository\StudentRepositoryImpl.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\service\ManagerServiceImpl.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\utils\EmailRegexConfig.java
-C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\ManagerTeacherUpdateController.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\dataValidation\userValidation\package-info.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\repository\ManagerAccountRepository.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\service\Service.java
@@ -47,13 +46,12 @@ C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\Student
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\StudentListCourseController.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\dataValidation\userValidation\nameChecking\LengthCheckingImpl.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\model\StudentAccount.java
-C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\ManagerStudentAddController.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\StudentInformationController.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\TeacherClassController.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\dataValidation\userValidation\Validation.java
+C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\ForgotPasswordController.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\dataValidation\userValidation\idChecking\LengthChecking.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\service\ManagerService.java
-C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\ManagerManagerAddController.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\App.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\utils\package-info.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\SecondaryController.java
@@ -67,13 +65,12 @@ C:\Users\Admin\eclipse-workspace\testFX\src\main\java\dataValidation\userValidat
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\LoginController.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\ParserFacrory\ManagerParsable.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\service\package-info.java
+C:\Users\Admin\eclipse-workspace\testFX\src\main\java\service\StudentServiceImpl.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\dataValidation\userValidation\emailChecking\GmailFormChecking.java
-C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\ManagerTeacherAddController.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\ManagerTeacherController.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\repository\TeacherRepositoryImpl.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\dataValidation\userValidation\idChecking\CharacterChecking.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\model\Manager.java
-C:\Users\Admin\eclipse-workspace\testFX\src\main\java\org\openjfx\testFX\ManagerManagerUpdateController.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\dataValidation\userValidation\nameChecking\CharacterChecking.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\model\ManagerAccount.java
 C:\Users\Admin\eclipse-workspace\testFX\src\main\java\dataValidation\userValidation\idChecking\CharacterCheckingImpl.java

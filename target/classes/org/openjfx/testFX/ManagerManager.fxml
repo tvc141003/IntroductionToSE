@@ -2,9 +2,12 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -26,35 +29,78 @@
             </Text>
          </children></AnchorPane>
    </top>
-   <center>
-      <AnchorPane prefHeight="573.0" prefWidth="946.0" BorderPane.alignment="CENTER">
+   <bottom>
+      <AnchorPane prefHeight="10.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <left>
+      <AnchorPane prefHeight="582.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView layoutX="37.0" layoutY="79.0" prefHeight="424.0" prefWidth="1137.0" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="79.0">
-              <columns>
-                <TableColumn prefWidth="56.00000762939453" text="STT" />
-                <TableColumn prefWidth="133.59998321533203" text="ID" />
-                  <TableColumn prefWidth="283.9998779296875" text="First name" />
-                  <TableColumn prefWidth="176.79998779296875" text="Last name" />
-                  <TableColumn prefWidth="132.0" text="Gender" />
-              </columns>
-            </TableView>
-            <TextField layoutX="835.0" layoutY="43.0" prefHeight="26.0" prefWidth="179.0" promptText="ID of Student" AnchorPane.rightAnchor="125.00000000000006" />
-            <Button graphicTextGap="6.0" layoutX="1028.0" layoutY="44.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="85.0" styleClass="buttonLogin" stylesheets="@styleLogin.css" text="Search" AnchorPane.rightAnchor="25.60000000000005">
+            <TextField fx:id="textFilter" layoutX="867.0" layoutY="35.0" prefHeight="26.0" prefWidth="179.0" promptText="ID of Teacher" AnchorPane.rightAnchor="153.79999999999995" />
+            <Button fx:id="btnSearch" graphicTextGap="6.0" layoutX="1060.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="85.0" styleClass="buttonLogin" stylesheets="@styleLogin.css" text="Search" AnchorPane.rightAnchor="54.40000000000009">
                <graphic>
                   <FontAwesomeIcon glyphName="SEARCH" />
                </graphic>
             </Button>
-            <Button layoutX="1087.0" layoutY="513.0" mnemonicParsing="false" onAction="#onClickToAddManager" prefHeight="34.0" prefWidth="86.0" styleClass="buttonLogin" stylesheets="@styleLogin.css" text="Add" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="26.59999999999991" />
-            <Button layoutX="977.0" layoutY="513.0" mnemonicParsing="false" onAction="#onClickToUpdateManager" prefHeight="34.0" prefWidth="86.0" styleClass="buttonLogin" stylesheets="@styleLogin.css" text="Update" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="136.5999999999999" />
-            <Button layoutX="868.0" layoutY="513.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="86.0" styleClass="buttonLogin" stylesheets="@styleLogin.css" text="Delete" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="245.60000000000002" />
             <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickToBackHomeManager" prefHeight="34.0" prefWidth="45.0">
                <graphic>
                   <FontAwesomeIcon glyphName="ARROW_CIRCLE_LEFT" size="2em" />
                </graphic></Button>
+            <AnchorPane layoutX="60.0" layoutY="90.0" prefHeight="425.0" prefWidth="294.0" style="-fx-border-color: #334db3; -fx-border-width: 2;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="90.0">
+               <children>
+                  <TextField fx:id="txtManagerID" layoutX="89.0" layoutY="31.0" prefHeight="26.0" prefWidth="190.0" />
+                  <Label layoutX="5.0" layoutY="34.0" text=" Manager ID:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtFirstName" layoutX="88.0" layoutY="99.0" prefHeight="26.0" prefWidth="190.0" />
+                  <Label layoutX="13.0" layoutY="102.0" prefHeight="20.0" prefWidth="70.0" text="First Name:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtLastName" layoutX="88.0" layoutY="164.0" prefHeight="26.0" prefWidth="190.0" />
+                  <Label layoutX="13.0" layoutY="167.0" prefHeight="20.0" prefWidth="69.0" text="Last Name:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="32.0" layoutY="218.0" prefHeight="20.0" prefWidth="50.0" text="Gender:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtEmail" layoutX="88.0" layoutY="275.0" prefHeight="26.0" prefWidth="190.0" />
+                  <Label layoutX="45.0" layoutY="278.0" prefHeight="20.0" prefWidth="37.0" text="Email:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnAddManager" layoutX="31.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="60.0" text="Add" AnchorPane.bottomAnchor="36.0" AnchorPane.topAnchor="340.0" />
+                  <Button fx:id="btnUpdateManager" layoutX="126.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="61.0" text="Update" AnchorPane.bottomAnchor="36.0" AnchorPane.topAnchor="340.0" />
+                  <Button fx:id="btnDeleteManager" layoutX="221.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="57.0" text="Delete" AnchorPane.bottomAnchor="36.0" AnchorPane.topAnchor="340.0" />
+                  <RadioButton fx:id="rbMale" layoutX="89.0" layoutY="220.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="61.0" text="Male">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="gender" />
+                     </toggleGroup></RadioButton>
+                  <RadioButton fx:id="rbFemale" layoutX="181.0" layoutY="220.0" mnemonicParsing="false" text="Female" toggleGroup="$gender" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="367.0" layoutY="90.0" prefHeight="422.0" prefWidth="773.0" style="-fx-border-color: #334db3; -fx-border-width: 2;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="367.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="90.0">
+               <children>
+                  <TableView fx:id="tableManager" layoutX="14.0" layoutY="14.0" onMouseClicked="#getItem" prefHeight="394.0" prefWidth="760.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                    <columns>
+                      <TableColumn prefWidth="38.399993896484375" text="No." />
+                      <TableColumn fx:id="colManagerId" prefWidth="143.99993896484375" text="Manager ID" />
+                        <TableColumn fx:id="colFirstName" prefWidth="156.79998779296875" text="First Name" />
+                        <TableColumn fx:id="colLastName" prefWidth="127.20001220703125" text="Last Name" />
+                        <TableColumn fx:id="colGender" prefWidth="106.4000244140625" text="Gender" />
+                        <TableColumn fx:id="colEmail" prefWidth="165.79998779296875" text="Email" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
-   </center>
-   <bottom>
-      <AnchorPane prefHeight="10.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
-   </bottom>
+   </left>
 </BorderPane>

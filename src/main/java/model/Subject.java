@@ -68,6 +68,7 @@ public class Subject{
 	@Column(name = "credits")
 	private int credits;
 	
+	
 	@OneToMany(mappedBy = "subject")
 	Set<Student_Subject> student_subject;
 	

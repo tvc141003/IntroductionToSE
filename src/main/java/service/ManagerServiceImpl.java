@@ -25,43 +25,40 @@ import repository.StudentRepositoryImpl;
 import utils.MailUtils;
 
 public class ManagerServiceImpl implements ManagerService {
-	private static  ManagerServiceImpl INSTANCE ;
+	private static ManagerServiceImpl INSTANCE;
 	private GmailFormCheckingImpl mail;
 	private GenderCheckingImpl gender;
 	private LengthCheckingImpl checkLengthName;
 	private LengthCheckingImpl checkLengthId;
-	
+
 	private ManagerServiceImpl() {
-		
+
 	}
-	
+
 	public static ManagerServiceImpl getInstance() {
 		if (INSTANCE == null) {
 			INSTANCE = new ManagerServiceImpl();
 		}
 		return INSTANCE;
 	}
-	
-	public boolean login(String id, String password)
-	{
-		if(ManagerAccountRepositoryImpl.getInstance().isCorrect(id, password) == true)
-		{
+
+	public boolean login(String id, String password) {
+		if (ManagerAccountRepositoryImpl.getInstance().isCorrect(id, password) == true) {
 			System.out.println("true Login");
 			return true;
-		}
-		else
-		{
+		} else {
 			System.out.println("false Login");
 			return false;
 		}
-		
+
 	}
 
 	@Override
 	public Object viewMyProfile(Object origin) {
 		Manager manager = (Manager) origin;
-		//System.out.print(ManagerAccountRepositoryImpl.getInstance().findByUsernameId(manager.getManagerId()));
-		ManagerAccount n = (ManagerAccount) ManagerAccountRepositoryImpl.getInstance().findByUsernameId(manager.getManagerId());
+		// System.out.print(ManagerAccountRepositoryImpl.getInstance().findByUsernameId(manager.getManagerId()));
+		ManagerAccount n = (ManagerAccount) ManagerAccountRepositoryImpl.getInstance()
+				.findByUsernameId(manager.getManagerId());
 		System.out.print(n.getId() + " " + n.getPassword() + " " + n.getManager().getEmail());
 		return n;
 	}
@@ -69,16 +66,14 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public boolean forgotPassword(String id, String email) {
 		mail = new GmailFormCheckingImpl();
-		if(mail.check(email) == true)
-		{
-			String password =  "";
+		if (mail.check(email) == true) {
+			String password = "";
 			password = ManagerAccountRepositoryImpl.getInstance().findByUsernameId(id).getPassword();
-			
+
 			MailUtils.getInstance().sendPassword(email, password);
 			System.out.print(password);
 			return true;
-		}
-		else {
+		} else {
 			System.out.print("Email error");
 			return false;
 		}
@@ -113,19 +108,24 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public boolean createManager(String managerId, String firstName, String lastName, boolean gender, String email, String passWord) {
+	public boolean createManager(Manager manager) {
 		// TODO Auto-generated method stub
-		mail = new GmailFormCheckingImpl();
-		checkLengthName = new LengthCheckingImpl();
-		if(mail.check(email) == true)
-		{
-			Manager manager = new Manager(managerId,firstName,lastName,gender,email);
-			ManagerRepositoryImpl.getInstance().save(manager);
-			ManagerAccount managerAccount = new ManagerAccount(manager,passWord);
-			ManagerAccountRepositoryImpl.getInstance().save(managerAccount);
-			return true;
-		}
-		return false;
+		ManagerRepositoryImpl.getInstance().save(manager);
+		String password = manager.getManagerId() + manager.getFirstName();
+		ManagerAccount managerAccount = new ManagerAccount(manager, password);
+		ManagerAccountRepositoryImpl.getInstance().save(managerAccount);
+		return true;
+		/*
+		 * mail = new GmailFormCheckingImpl(); checkLengthName = new
+		 * LengthCheckingImpl(); if(mail.check(manager.getEmail()) == true) { //Manager
+		 * manager = new Manager(managerId,firstName,lastName,gender,email);
+		 * ManagerRepositoryImpl.getInstance().save(manager);
+		 * 
+		 * ManagerAccount managerAccount = new ManagerAccount(manager,passWord);
+		 * ManagerAccountRepositoryImpl.getInstance().save(managerAccount);
+		 * 
+		 * return true; } return false;
+		 */
 	}
 
 	@Override
@@ -135,40 +135,45 @@ public class ManagerServiceImpl implements ManagerService {
 		ManagerRepositoryImpl.getInstance().remove(manager.getManagerId());
 		return true;
 	}
+
 	@Override
-	public 	boolean updateManager(String managerId, String firstName, String lastName, boolean gender, String email, String passWord) {
+	public boolean updateManager(String managerId, String firstName, String lastName, boolean gender, String email,
+			String passWord) {
 		return false;
 	}
-	
-	
-	
+
 	@Override
-	public 	boolean createSubject(String subjectId, String name, int credits ) {
-		Subject subject = new Subject(subjectId,name,credits);
+	public boolean createSubject(String subjectId, String name, int credits) {
+		Subject subject = new Subject(subjectId, name, credits);
 		SubjectRepositoryImpl.getInstance().save(subject);
 		return true;
 	}
+
 	@Override
 	public boolean deleteSubject(Object origin) {
 		Subject subject = (Subject) origin;
 		SubjectRepositoryImpl.getInstance().remove(subject.getSubjectId());
 		return true;
 	}
+
 	@Override
-	public 	boolean updateSubject(String subjectId, String name, int credits ) {
+	public boolean updateSubject(String subjectId, String name, int credits) {
 		return false;
 	}
-	
-	
-	
+
 	@Override
-	public boolean createTeacher(String teacherId, String firstName, String lastName, boolean gender, String email, long id, String passWord) {
+	public boolean createTeacher(Teacher teacher) {
 		// TODO Auto-generated method stub
-		Teacher teacher = new Teacher(teacherId, firstName, lastName, gender, email);
 		TeacherRepositoryImpl.getInstance().save(teacher);
-		TeacherAccount teacherAccount = new TeacherAccount(id, teacher, passWord);
+		String password = teacher.getId() + teacher.getFirstName();
+		TeacherAccount teacherAccount = new TeacherAccount(Long.parseLong(teacher.getId()),teacher, password);
 		TeacherAccountRepositoryImpl.getInstance().save(teacherAccount);
+		/*
+		 * TeacherAccount teacherAccount = new TeacherAccount(id, teacher, passWord);
+		 * TeacherAccountRepositoryImpl.getInstance().save(teacherAccount);
+		 */
 		return true;
+		
 	}
 
 	@Override
@@ -178,20 +183,21 @@ public class ManagerServiceImpl implements ManagerService {
 		TeacherRepositoryImpl.getInstance().remove(teacher.getTeacher().getId());
 		return true;
 	}
+
 	@Override
-	public 	boolean updateTeacher(String teacherId, String firstName, String lastName, boolean gender, String email, String passWord) {
+	public boolean updateTeacher(String teacherId, String firstName, String lastName, boolean gender, String email,
+			String passWord) {
 		return false;
 	}
-	
-	
+
 	@Override
-	public boolean createStudent(String studentId, String firstName, String lastName, boolean gender, String email, long id, String passWord) {
+	public boolean createStudent(Student student) {
 		// TODO Auto-generated method stub
-		Student student = new Student(studentId, firstName, lastName, gender, email);
 		StudentRepositoryImpl.getInstance().save(student);
-		StudentAccount studentAccount = new StudentAccount(student, passWord);
+		String password = student.getStudentId() + student.getFirstName();
+		StudentAccount studentAccount = new StudentAccount(student, password);
 		StudentAccountRepositoryImpl.getInstance().save(studentAccount);
-			return true;
+		return true;
 	}
 
 	@Override
@@ -201,8 +207,10 @@ public class ManagerServiceImpl implements ManagerService {
 		StudentRepositoryImpl.getInstance().remove(studentAccount.getStudent().getStudentId());
 		return true;
 	}
+
 	@Override
-	public 	boolean updateStudent(String studentId, String firstName, String lastName, boolean gender, String email, String passWord) {
+	public boolean updateStudent(String studentId, String firstName, String lastName, boolean gender, String email,
+			String passWord) {
 		return false;
 	}
 
@@ -224,7 +232,7 @@ public class ManagerServiceImpl implements ManagerService {
 		return StudentRepositoryImpl.getInstance().findAll();
 	}
 
-	@Override
+	@Override	
 	public List<Subject> viewSubject() {
 		// TODO Auto-generated method stub
 		return SubjectRepositoryImpl.getInstance().findAll();
@@ -252,7 +260,7 @@ public class ManagerServiceImpl implements ManagerService {
 		// TODO Auto-generated method stub
 		return SubjectRepositoryImpl.getInstance().findById(id);
 	}
-	
+
 	@Override
 	public String toString() {
 		return "ManagerServiceImpl";
