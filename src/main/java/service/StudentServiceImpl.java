@@ -27,6 +27,17 @@ import utils.MailUtils;
 public class StudentServiceImpl implements StudentService{
 
 	private GmailFormCheckingImpl mail;
+	private static StudentServiceImpl INSTANCE;
+	private StudentServiceImpl() {
+
+	}
+
+	public static StudentServiceImpl getInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new StudentServiceImpl();
+		}
+		return INSTANCE;
+	}
 	@Override
 	public Object viewMyProfile(Object origin) {
 		// TODO Auto-generated method stub
@@ -71,27 +82,16 @@ public class StudentServiceImpl implements StudentService{
 		return false;
 	}
 
-	@Override
-	public boolean joinSubject(Subject subject, Object origin) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean outSubject(Subject subject, Object origin) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public List<Subject> viewSubject(Subject subject, Object origin) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void updateStudent(String studentId, String firstName, String lastName, boolean gender, String email,String passWord) {
 		// TODO Auto-generated method stub
+		StudentAccountRepositoryImpl.getInstance().remove(studentId);
+		StudentRepositoryImpl.getInstance().remove(studentId);
+		Student student = new Student(studentId, firstName, lastName, gender, email);
+		StudentRepositoryImpl.getInstance().save(student);
+		StudentAccount studentAccount = new StudentAccount(student, passWord);
+		StudentAccountRepositoryImpl.getInstance().save(studentAccount);
 	}
 
 	@Override

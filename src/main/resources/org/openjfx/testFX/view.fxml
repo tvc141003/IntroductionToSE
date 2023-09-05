@@ -3,43 +3,38 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.testFX.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.testFX.ViewController">
    <right>
       <AnchorPane prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: t;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="userName" layoutX="143.0" layoutY="275.0" prefHeight="39.0" prefWidth="290.0" promptText="User name" style="-fx-background-color: transparent; -fx-border-color: #0589ff; -fx-border-width: 0px 0px 2px 0px;">
-               <font>
-                  <Font size="14.0" />
-               </font></TextField>
-            <PasswordField fx:id="passWord" layoutX="143.0" layoutY="341.0" prefHeight="30.0" prefWidth="290.0" promptText="Password" style="-fx-background-color: transpatrent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
-               <font>
-                  <Font size="14.0" />
-               </font></PasswordField>
-            <FontAwesomeIcon fill="#0598ff" glyphName="USER" layoutX="102.0" layoutY="311.0" size="3em" text="" wrappingWidth="29.649950981140137" />
-            <FontAwesomeIcon fill="#0598ff" glyphName="KEY" layoutX="100.0" layoutY="367.0" size="3em" text="" />
-            <FontAwesomeIcon fill="#0598ff" glyphName="USERS" layoutX="220.0" layoutY="168.0" size="8em" text="" wrappingWidth="68.28571319580078" />
-            <Button layoutX="317.0" layoutY="399.0" mnemonicParsing="false" onAction="#login" onDragEntered="#login" prefHeight="46.0" prefWidth="116.0" stylesheets="@styleLogin.css" text="Login">
+            <FontAwesomeIcon fill="#0598ff" glyphName="USERS" layoutX="217.0" layoutY="168.0" size="8em" text="" wrappingWidth="68.28571319580078" />
+            <Button fx:id="btnStudent" layoutX="364.0" layoutY="335.0" mnemonicParsing="false" onAction="#hannleAction" prefHeight="46.0" prefWidth="116.0" stylesheets="@styleLogin.css" text="Student">
                <styleClass>
                   <String fx:value="btnLogin" />
                   <String fx:value="buttonLogin" />
                </styleClass></Button>
-            <Hyperlink layoutX="139.0" layoutY="413.0" onAction="#forgotPassword" text="Forgot password?" textFill="#632edc">
-               <font>
-                  <Font name="System Italic" size="14.0" />
-               </font></Hyperlink>
-            <Text fill="#0598ff" layoutX="181.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USER LOGIN" wrappingWidth="182.5780029296875">
+            <Text fill="#0598ff" layoutX="178.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USER LOGIN" wrappingWidth="182.5780029296875">
                <font>
                   <Font size="32.0" />
                </font>
             </Text>
+            <Button fx:id="btnTeacher" layoutX="211.0" layoutY="335.0" mnemonicParsing="false" onAction="#hannleAction" prefHeight="46.0" prefWidth="116.0" stylesheets="@styleLogin.css" text="Teacher">
+               <styleClass>
+                  <String fx:value="btnLogin" />
+                  <String fx:value="buttonLogin" />
+               </styleClass>
+            </Button>
+            <Button fx:id="btnManager" layoutX="55.0" layoutY="335.0" mnemonicParsing="false" onAction="#hannleAction" prefHeight="46.0" prefWidth="116.0" stylesheets="@styleLogin.css" text="Manager">
+               <styleClass>
+                  <String fx:value="btnLogin" />
+                  <String fx:value="buttonLogin" />
+               </styleClass>
+            </Button>
          </children>
       </AnchorPane>
    </right>

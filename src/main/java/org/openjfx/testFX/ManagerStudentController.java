@@ -27,6 +27,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Student;
+import repository.StudentAccountRepositoryImpl;
 import repository.StudentRepositoryImpl;
 import service.ManagerServiceImpl;
 
@@ -164,16 +165,20 @@ public class ManagerStudentController implements Initializable {
 	{
 		
 		Student student = new Student(txtStudentID.getText(), txtFirstName.getText(), txtLastName.getText(), gender(), txtEmail.getText());
-
-		StudentRepositoryImpl.getInstance().save(student);
+		//StudentRepositoryImpl.getInstance().save(student);
+		ManagerServiceImpl.getInstance().createStudent(student);
 	}
 	public void updateStudent()
 	{
-		
+		String passWord = ManagerServiceImpl.getInstance().findStudent(txtStudentID.getText()).getAccount().getPassword();
+		ManagerServiceImpl.getInstance().updateStudent(txtStudentID.getText(), txtFirstName.getText(), txtLastName.getText(), gender(), txtEmail.getText(), passWord);
 	}
 	public void deleteStudent()
 	{
+		Student student = new Student(txtStudentID.getText(), txtFirstName.getText(), txtLastName.getText(), gender(), txtEmail.getText());
+		StudentAccountRepositoryImpl.getInstance().remove(txtStudentID.getText());
 		StudentRepositoryImpl.getInstance().remove(txtStudentID.getText());
+		//ManagerServiceImpl.getInstance().deleteStudent(student);
 	}
 	Integer index;
 	@FXML

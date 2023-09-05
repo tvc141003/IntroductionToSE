@@ -54,11 +54,6 @@
                         <FontAwesomeIcon glyphName="LEANPUB" size="4em" text="" />
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onClickToSchedule" prefHeight="156.0" prefWidth="236.0" stylesheets="@styleButton.css" text="  Schedule " GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <graphic>
-                        <FontAwesomeIcon glyphName="TABLE" size="4em" />
-                     </graphic>
-                  </Button>
                </children>
             </GridPane>
             <Button layoutX="14.0" layoutY="535.0" mnemonicParsing="false" onAction="#onClickToLogOut" prefHeight="32.0" prefWidth="44.0">

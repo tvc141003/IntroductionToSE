@@ -159,11 +159,8 @@ public class ManagerAccountRepositoryImpl implements ManagerAccountRepository{
 	
 	
 	public static ManagerAccountRepositoryImpl getInstance() {
-		System.out.println(1);
 		if (INSTANCE == null) {
-			System.out.println(2);
 			INSTANCE = new ManagerAccountRepositoryImpl();
-			System.out.println(3);
 		}
 		return INSTANCE;
 	}

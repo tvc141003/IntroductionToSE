@@ -28,11 +28,13 @@ public class TeacherAccount {
 	String password;
 
 
-	public TeacherAccount(long id, Teacher teacher, String passWord) {
+	public TeacherAccount(Teacher teacher, String passWord) {
 		// TODO Auto-generated constructor 
-		this.id = id;
 		this.teacher = teacher;
 		this.password = passWord;
+	}
+	public TeacherAccount() {
+		
 	}
 
 

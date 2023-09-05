@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import model.Student;
 import repository.StudentRepositoryImpl;
 import repository.TeacherRepositoryImpl;
+import service.ManagerServiceImpl;
 
 import java.io.IOException;
 import java.net.URL;
@@ -67,7 +68,8 @@ public class TeacherInformationController implements Initializable {
     void handleButtonAction(ActionEvent event) {
     	if(event.getSource() == btnUpdate)
 		{
-    		
+    		changeInformation();
+    		showInformation();
 		}
 	}
 
@@ -79,9 +81,9 @@ public class TeacherInformationController implements Initializable {
 	}
 	public void showInformation()
 	{
-		//LoginController ID = new LoginController();
+		LoginTeacherController ID = new LoginTeacherController();
 		//String studentID = ID.getUserName();
-		String teacherID = "TC001";
+		String teacherID = ID.getUserName();
 		//s = StudentRepositoryImpl.getInstance().findById(studentID);
 		txtTeacherID.setText(TeacherRepositoryImpl.getInstance().findById(teacherID).getId());
 		txtFirstName.setText(TeacherRepositoryImpl.getInstance().findById(teacherID).getFirstName());
@@ -93,7 +95,7 @@ public class TeacherInformationController implements Initializable {
         } else {
             rbFemale.setSelected(true);
         }
-		//txtPassword.setText(StudentRepositoryImpl.getInstance().findById(studentID).getAccount().getPassword());
+		txtPassword.setText(TeacherRepositoryImpl.getInstance().findById(teacherID).getAccount().getPassword());
 	}
 	public void changeInformation()
 	{
@@ -101,6 +103,23 @@ public class TeacherInformationController implements Initializable {
 		//String studentID = ID.getUserName();
 		//String studentID = "21127121";
 		//txtPassword.setText(StudentRepositoryImpl.getInstance().findById(studentID).getAccount().getPassword());
+		ManagerServiceImpl.getInstance().updateTeacher(txtTeacherID.getText(), txtFirstName.getText(), txtLastName.getText(), gender(), txtEmail.getText(), txtPassword.getText() );
 	}
-
+	public boolean gender()
+	{	
+		boolean check = true;
+		RadioButton selected = (RadioButton) gender.getSelectedToggle();
+		
+			 System.out.print(selected.getText());
+			 if(selected.getText().equals("Male")) 
+			 { 
+				 check = true;
+				 return check;
+			 } 
+			 else if(selected.getText().equals("Female")) {
+				 check = false;
+				 return check;
+		}
+		return check;
+	}
 }

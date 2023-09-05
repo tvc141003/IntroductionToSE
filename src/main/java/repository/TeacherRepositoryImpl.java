@@ -1,6 +1,8 @@
 package repository;
 
 import java.util.List;
+import java.util.Set;
+
 import javax.persistence.criteria.CriteriaBuilder;
 
 import javax.persistence.criteria.CriteriaQuery;
@@ -15,7 +17,7 @@ import org.hibernate.Transaction;
 
 
 import model.Teacher;
-
+import model.Teacher_Subject;
 import utils.HibernateUtils;
 
 
@@ -64,7 +66,7 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 	public void save( Teacher model) {
 		session = factory.openSession();
 		
-		session.save(model);
+		session.saveOrUpdate(model);
 		
 		Transaction tx = session.beginTransaction();
 		
@@ -140,7 +142,36 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 	}
 
 
+	public void removeTeacher_Subject(Teacher t ,Teacher_Subject ts) {
+		if (t.getTeacher_subject().size() == 0 ) return ;
+		System.out.println(1);
+		session = factory.openSession(); //open session
+		
+	
+		Set<Teacher_Subject> set = t.getTeacher_subject();
+    	for (Teacher_Subject i : set) {
+    		if (i.getSubject_id().getSubjectId().equals(ts.getSubject_id().getSubjectId()) && i.getClassName().equals(ts.getClassName()) && i.getSemester().equals(ts.getSemester())) {
+    			set.remove(i);
+    			session.delete(i);
+    			System.out.println(2);
+    			break;
+    			
+    		}
+    	}
+    	
+    	session.saveOrUpdate(t);
+		Transaction tx = session.beginTransaction();
 
+		try {
+			tx.commit();
+		} 
+		catch (HibernateException e) {
+			tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close(); // close session
+		}
+	}
 
 
 

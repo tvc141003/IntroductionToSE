@@ -31,6 +31,7 @@ public class SubjectRepositoryImpl implements SubjectRepository {
 		session = factory.openSession() ;
 		cb = session.getCriteriaBuilder();
 		CriteriaQuery<Subject> cr = cb.createQuery(Subject.class);
+		root = cr.from(Subject.class);
 		cr.select(root) ;
 		org.hibernate.query.Query<Subject> query = session.createQuery(cr);
 		List<Subject> list  = query.getResultList();
@@ -46,6 +47,7 @@ public class SubjectRepositoryImpl implements SubjectRepository {
 		session = factory.openSession();
 		cb = session.getCriteriaBuilder();
 		CriteriaQuery<Subject> cr = cb.createQuery(Subject.class);
+		root = cr.from(Subject.class);
 		cr.select(root).where(cb.equal(root.get("subjectId"), id));
 		org.hibernate.query.Query<Subject> query = session.createQuery(cr);
 		List<Subject> list  = query.getResultList();
@@ -81,7 +83,7 @@ public class SubjectRepositoryImpl implements SubjectRepository {
 		Subject subject = this.findById(id);
 		if (subject == null) return ;
 		
-		session = factory.openSession(); //open session
+		session = factory.openSession(); //open session	
 		
 		session.delete(subject);
 		

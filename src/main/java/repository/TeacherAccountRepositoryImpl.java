@@ -105,7 +105,7 @@ if (this.isExist(origin.getTeacher().getTeacherId()) == false) return;
 
 	public void save(TeacherAccount origin) {
 		session = factory.openSession();
-		session.save(origin);
+		session.saveOrUpdate(origin);
 		
 		Transaction tx = session.beginTransaction();
 		

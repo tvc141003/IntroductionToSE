@@ -65,13 +65,15 @@ public class ManagerServiceImpl implements ManagerService {
 
 	@Override
 	public boolean forgotPassword(String id, String email) {
+		System.out.print(id);
 		mail = new GmailFormCheckingImpl();
 		if (mail.check(email) == true) {
+			System.out.print(email);
 			String password = "";
 			password = ManagerAccountRepositoryImpl.getInstance().findByUsernameId(id).getPassword();
-
-			MailUtils.getInstance().sendPassword(email, password);
 			System.out.print(password);
+			MailUtils.getInstance().sendPassword(email, password);
+			System.out.print("1111");
 			return true;
 		} else {
 			System.out.print("Email error");
@@ -88,25 +90,6 @@ public class ManagerServiceImpl implements ManagerService {
 		System.out.print(manager.getPassword());
 		return true;
 	}
-
-	@Override
-	public boolean joinSubject(Subject subject, Object origin) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean outSubject(Subject subject, Object origin) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public List<Subject> viewSubject(Subject subject, Object origin) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	public boolean createManager(Manager manager) {
 		// TODO Auto-generated method stub
@@ -137,9 +120,16 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public boolean updateManager(String managerId, String firstName, String lastName, boolean gender, String email,
-			String passWord) {
-		return false;
+	public boolean updateManager(String managerId, String firstName, String lastName, boolean gender, String email, String passWord) {
+		ManagerAccountRepositoryImpl.getInstance().remove(managerId);
+		ManagerRepositoryImpl.getInstance().remove(managerId);
+		
+		Manager manager = new Manager(managerId, firstName, lastName, gender, email);
+		ManagerRepositoryImpl.getInstance().save(manager);
+		ManagerAccount managerAccount = new ManagerAccount(manager, passWord);
+		ManagerAccountRepositoryImpl.getInstance().save(managerAccount);
+		System.out.print(manager.getManagerId());
+		return true;
 	}
 
 	@Override
@@ -158,7 +148,11 @@ public class ManagerServiceImpl implements ManagerService {
 
 	@Override
 	public boolean updateSubject(String subjectId, String name, int credits) {
-		return false;
+		SubjectRepositoryImpl.getInstance().remove(subjectId);
+		
+		Subject subject = new Subject(subjectId, name, credits);
+		SubjectRepositoryImpl.getInstance().save(subject);
+		return true;
 	}
 
 	@Override
@@ -166,28 +160,30 @@ public class ManagerServiceImpl implements ManagerService {
 		// TODO Auto-generated method stub
 		TeacherRepositoryImpl.getInstance().save(teacher);
 		String password = teacher.getId() + teacher.getFirstName();
-		TeacherAccount teacherAccount = new TeacherAccount(Long.parseLong(teacher.getId()),teacher, password);
+		TeacherAccount teacherAccount = new TeacherAccount(teacher, password);
 		TeacherAccountRepositoryImpl.getInstance().save(teacherAccount);
-		/*
-		 * TeacherAccount teacherAccount = new TeacherAccount(id, teacher, passWord);
-		 * TeacherAccountRepositoryImpl.getInstance().save(teacherAccount);
-		 */
 		return true;
 		
 	}
 
 	@Override
 	public boolean deleteTeacher(Object origin) {
-		TeacherAccount teacher = (TeacherAccount) origin;
-		TeacherAccountRepositoryImpl.getInstance().remove(teacher.getTeacher().getId());
-		TeacherRepositoryImpl.getInstance().remove(teacher.getTeacher().getId());
+		Teacher teacher = (Teacher) origin;
+		TeacherAccountRepositoryImpl.getInstance().remove(teacher.getId());
+		TeacherRepositoryImpl.getInstance().remove(teacher.getId());
 		return true;
 	}
 
 	@Override
-	public boolean updateTeacher(String teacherId, String firstName, String lastName, boolean gender, String email,
-			String passWord) {
-		return false;
+	public boolean updateTeacher(String teacherId, String firstName, String lastName, boolean gender, String email,String passWord) {
+		TeacherAccountRepositoryImpl.getInstance().remove(teacherId);
+		TeacherRepositoryImpl.getInstance().remove(teacherId);
+		
+		Teacher  teacher = new Teacher(teacherId, firstName, lastName, gender, email);
+		TeacherRepositoryImpl.getInstance().save(teacher);
+		TeacherAccount teacherAccount = new TeacherAccount(teacher, passWord);
+		TeacherAccountRepositoryImpl.getInstance().save(teacherAccount);
+		return true;
 	}
 
 	@Override
@@ -202,16 +198,21 @@ public class ManagerServiceImpl implements ManagerService {
 
 	@Override
 	public boolean deleteStudent(Object origin) {
-		StudentAccount studentAccount = (StudentAccount) origin;
-		StudentAccountRepositoryImpl.getInstance().remove(studentAccount.getStudent().getStudentId());
-		StudentRepositoryImpl.getInstance().remove(studentAccount.getStudent().getStudentId());
+		Student student = (Student) origin;
+		StudentAccountRepositoryImpl.getInstance().remove(student.getStudentId());
+		StudentRepositoryImpl.getInstance().remove(student.getStudentId());
 		return true;
 	}
 
 	@Override
-	public boolean updateStudent(String studentId, String firstName, String lastName, boolean gender, String email,
-			String passWord) {
-		return false;
+	public boolean updateStudent(String studentId, String firstName, String lastName, boolean gender, String email,String passWord) {
+		StudentAccountRepositoryImpl.getInstance().remove(studentId);
+		StudentRepositoryImpl.getInstance().remove(studentId);
+		Student student = new Student(studentId, firstName, lastName, gender, email);
+		StudentRepositoryImpl.getInstance().save(student);
+		StudentAccount studentAccount = new StudentAccount(student, passWord);
+		StudentAccountRepositoryImpl.getInstance().save(studentAccount);
+		return true;
 	}
 
 	@Override
@@ -231,8 +232,7 @@ public class ManagerServiceImpl implements ManagerService {
 		// TODO Auto-generated method stub
 		return StudentRepositoryImpl.getInstance().findAll();
 	}
-
-	@Override	
+	@Override
 	public List<Subject> viewSubject() {
 		// TODO Auto-generated method stub
 		return SubjectRepositoryImpl.getInstance().findAll();

@@ -49,8 +49,24 @@ public class MenuHomeManagerController {
     	stage.show();
     }
     @FXML
+    public void onClickToInformation(ActionEvent event) throws IOException {
+    	Parent root = FXMLLoader.load(getClass().getResource("ManagerInformation.fxml"));
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+    }
+    @FXML
+    public void onClickToTeacherSubject(ActionEvent event) throws IOException {
+    	Parent root = FXMLLoader.load(getClass().getResource("ManagerTeacherSubject.fxml"));
+    	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	scene = new Scene(root);
+    	stage.setScene(scene);
+    	stage.show();
+    }
+    @FXML
     public void onClickToLogOut(ActionEvent event)throws IOException {
-    	Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+    	Parent root = FXMLLoader.load(getClass().getResource("View.fxml"));
     	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     	scene = new Scene(root);
     	stage.setScene(scene);

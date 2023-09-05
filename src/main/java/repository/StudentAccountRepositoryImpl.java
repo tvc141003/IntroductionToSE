@@ -54,26 +54,23 @@ public class StudentAccountRepositoryImpl implements StudentAccountRepository{
 	}
 
 	public boolean isCorrect(String username_id, String password) {
+		if (this.isExist(username_id) == false) {
+			return false;
+		}
 		session = factory.openSession(); //open session
 		cb = session.getCriteriaBuilder();
 		cr = cb.createQuery(Student.class);
 		root  = cr.from(Student.class);
-		if (this.isExist(username_id) == false) {
-			session.close(); 
-			return false;
-		}
-		
-		
 		cr.select(root).where(cb.equal(root.get("studentId"), username_id));
 		org.hibernate.query.Query<Student> query = session.createQuery(cr);
 		List<Student> list  = query.getResultList();
+		
+		session.close(); 
 		
 		if (list.get(0).getAccount().getPassword().equals(password)) {
 			session.close();
 			return true;
 		}
-		
-		session.close();
 		return false;
 	}
 
@@ -109,7 +106,7 @@ public class StudentAccountRepositoryImpl implements StudentAccountRepository{
 
 	public void save(StudentAccount origin) {
 		session = factory.openSession(); //open session
-		session.save(origin);
+		session.saveOrUpdate(origin);
 		session.close();//close session
 		
 		
@@ -121,8 +118,10 @@ public class StudentAccountRepositoryImpl implements StudentAccountRepository{
 		if (account == null) return ;
 		session = factory.openSession(); //open session
 		
-		Transaction tx = session.getTransaction();
+		
+		Transaction tx = session.beginTransaction();
 		session.delete(account);
+		
 		
 		try {
 			tx.commit();

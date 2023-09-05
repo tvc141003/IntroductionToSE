@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import service.StudentServiceImpl;
 import javafx.scene.Node;
 public class MenuHomeStudentController {
 
@@ -42,6 +43,10 @@ public class MenuHomeStudentController {
     }
     @FXML
     public void onClickToSchedule(ActionEvent event)throws IOException {
+    	LoginStudentController student =  new LoginStudentController();
+		String studentID = student.getId();
+		System.out.print(studentID);
+		System.out.print(StudentServiceImpl.getInstance().findStudent(studentID).getStudentId());
     	Parent root = FXMLLoader.load(getClass().getResource("StudentSchedule.fxml"));
     	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     	scene = new Scene(root);

@@ -1,5 +1,6 @@
 package model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -74,6 +75,10 @@ public class Student{
 	
 	
 	public Set<Student_Subject> getStudent_subject() {
+		if(student_subject == null)
+		{
+			student_subject = new HashSet<Student_Subject>();
+		}
 		return student_subject;
 	}
 

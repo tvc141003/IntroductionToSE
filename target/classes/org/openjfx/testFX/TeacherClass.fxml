@@ -35,12 +35,10 @@
                <graphic>
                   <FontAwesomeIcon glyphName="ARROW_CIRCLE_LEFT" size="2em" />
                </graphic></Button>
-            <TableView fx:id="table" layoutX="86.0" layoutY="62.0" prefHeight="458.0" prefWidth="1000.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="86.0" AnchorPane.rightAnchor="114.0">
+            <TableView fx:id="tableClass" layoutX="86.0" layoutY="62.0" prefHeight="458.0" prefWidth="1000.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="86.0" AnchorPane.rightAnchor="114.0">
                <columns>
-                  <TableColumn fx:id="Id" prefWidth="188.0000228881836" text="ID" />
-                  <TableColumn fx:id="NameCourse" prefWidth="263.9999694824219" text="Name Course" />
-                  <TableColumn fx:id="Teacher" prefWidth="286.4000244140625" text="Teacher" />
-                  <TableColumn fx:id="Schedule" prefWidth="260.0" text="Schedule" />
+                  <TableColumn fx:id="colCourseID" prefWidth="337.59996032714844" text="Course ID" />
+                  <TableColumn fx:id="colNameCourse" prefWidth="661.6000366210938" text="Name Course" />
                </columns></TableView>
          </children>
       </AnchorPane>

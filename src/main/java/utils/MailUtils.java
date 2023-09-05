@@ -75,7 +75,6 @@ public class MailUtils {
 		        return new PasswordAuthentication(MailConfig.APP_EMAIL, MailConfig.APP_PASSWORD);
 		    }
 		});	
-	
 		 try {
 			MimeMessage message = new MimeMessage(session);
 			// nguoi gui

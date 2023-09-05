@@ -12,8 +12,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.DragEvent;
 import javafx.stage.Stage;
 import service.ManagerServiceImpl;
+import service.StudentServiceImpl;
 
-public class ForgotPasswordController {
+public class ForgotPasswordStudentController {
 
     @FXML
     private TextField email;
@@ -24,9 +25,9 @@ public class ForgotPasswordController {
     private Scene scene;
     private Parent root;
     @FXML
-    public void login(ActionEvent event) throws IOException{
-    	ManagerServiceImpl.getInstance().forgotPassword(email.getText(), Username.getText());
-    	Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+    public void sendMail(ActionEvent event) throws IOException{
+    	StudentServiceImpl.getInstance().forgotPassword(Username.getText(), email.getText());
+    	Parent root = FXMLLoader.load(getClass().getResource("LoginStudent.fxml"));
     	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     	scene = new Scene(root);
     	stage.setScene(scene);

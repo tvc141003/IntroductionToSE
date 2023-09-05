@@ -1,5 +1,9 @@
 package org.openjfx.testFX;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,12 +17,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import model.Student;
-import repository.StudentRepositoryImpl;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
+import repository.TeacherRepositoryImpl;
+import service.StudentServiceImpl;
 
 public class StudentInformationController implements Initializable {
 
@@ -52,8 +52,60 @@ public class StudentInformationController implements Initializable {
     private TextField txtPassword;
 
     @FXML
-    private TextField txtStudentID;
+    private TextField txtTeacherID;
 
+    @Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+    	ShowStudent();
+		
+	}
+    public void ShowStudent()
+    {
+    	LoginStudentController student = new LoginStudentController();
+    	String Id = student.getId();
+    	Student s = StudentServiceImpl.getInstance().findStudent(Id);
+    	txtTeacherID.setText(s.getStudentId());
+    	txtFirstName.setText(s.getFirstName());
+    	txtLastName.setText(s.getLastName());
+    	boolean isMale = s.isGender();
+        if (isMale) {
+            rbMale.setSelected(true);
+        } else {
+            rbFemale.setSelected(true);
+        }
+        txtEmail.setText(s.getEmail());
+        txtPassword.setText(s.getAccount().getPassword());
+    }
+    @FXML
+    void handleButtonAction(ActionEvent event) {
+    	if(event.getSource() == btnUpdate)
+		{
+    		changeInformation();
+    		ShowStudent();
+		}
+    }
+    public boolean gender()
+	{	
+		boolean check = true;
+		RadioButton selected = (RadioButton) gender.getSelectedToggle();
+		
+			 System.out.print(selected.getText());
+			 if(selected.getText().equals("Male")) 
+			 { 
+				 check = true;
+				 return check;
+			 } 
+			 else if(selected.getText().equals("Female")) {
+				 check = false;
+				 return check;
+		}
+		return check;
+	}
+    public void changeInformation()
+    {
+    	StudentServiceImpl.getInstance().updateStudent(txtTeacherID.getText(), txtFirstName.getText(), txtLastName.getText(), gender(), txtEmail.getText(), txtPassword.getText() );
+    }
     @FXML
     void onClickToBackStudentHome(ActionEvent event) throws IOException {
     	Parent root = FXMLLoader.load(getClass().getResource("menuHomeStudent.fxml"));
@@ -62,44 +114,5 @@ public class StudentInformationController implements Initializable {
     	stage.setScene(scene);
     	stage.show();
     }
-    @FXML
-    void handleButtonAction(ActionEvent event) {
-    	if(event.getSource() == btnUpdate)
-		{
-    		
-		}
-	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		showInformation();
-		
-	}
-	public void showInformation()
-	{
-		//LoginController ID = new LoginController();
-		//String studentID = ID.getUserName();
-		String studentID = "21127121";
-		//s = StudentRepositoryImpl.getInstance().findById(studentID);
-		txtStudentID.setText(StudentRepositoryImpl.getInstance().findById(studentID).getStudentId());
-		txtFirstName.setText(StudentRepositoryImpl.getInstance().findById(studentID).getFirstName());
-		txtLastName.setText(StudentRepositoryImpl.getInstance().findById(studentID).getLastName());
-		txtEmail.setText(StudentRepositoryImpl.getInstance().findById(studentID).getEmail());
-		boolean isMale = StudentRepositoryImpl.getInstance().findById(studentID).isGender();
-        if (isMale) {
-            rbMale.setSelected(true);
-        } else {
-            rbFemale.setSelected(true);
-        }
-		//txtPassword.setText(StudentRepositoryImpl.getInstance().findById(studentID).getAccount().getPassword());
-	}
-	public void changeInformation()
-	{
-		//LoginController ID = new LoginController();
-		//String studentID = ID.getUserName();
-		//String studentID = "21127121";
-		//txtPassword.setText(StudentRepositoryImpl.getInstance().findById(studentID).getAccount().getPassword());
-	}
 
 }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.testFX.ManagerTeacherSubjectController">
+   <top>
+      <AnchorPane prefHeight="127.0" prefWidth="1200.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" layoutX="30.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLONE PORTAL" AnchorPane.leftAnchor="30.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <Text layoutX="30.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manager of portal" AnchorPane.leftAnchor="32.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children></AnchorPane>
+   </top>
+   <bottom>
+      <AnchorPane prefHeight="10.0" prefWidth="1200.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <left>
+      <AnchorPane prefHeight="582.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="textFilter" layoutX="867.0" layoutY="35.0" prefHeight="26.0" prefWidth="179.0" promptText="ID of Subject" AnchorPane.rightAnchor="153.79999999999995" />
+            <Button fx:id="btnSearch" graphicTextGap="6.0" layoutX="1060.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="85.0" styleClass="buttonLogin" stylesheets="@styleLogin.css" text="Search" AnchorPane.rightAnchor="54.40000000000009">
+               <graphic>
+                  <FontAwesomeIcon glyphName="SEARCH" />
+               </graphic>
+            </Button>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickToBackHomeManager" prefHeight="34.0" prefWidth="45.0">
+               <graphic>
+                  <FontAwesomeIcon glyphName="ARROW_CIRCLE_LEFT" size="2em" />
+               </graphic></Button>
+            <AnchorPane layoutX="44.0" layoutY="90.0" prefHeight="422.0" prefWidth="310.0" style="-fx-border-color: #334db3; -fx-border-width: 2;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="44.0" AnchorPane.topAnchor="90.0">
+               <children>
+                  <TextField fx:id="txtSubjectID" editable="false" layoutX="105.0" layoutY="45.0" prefHeight="26.0" prefWidth="190.0" />
+                  <Label layoutX="24.0" layoutY="48.0" prefHeight="20.0" prefWidth="71.0" text=" Subject ID:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtSubjectName" editable="false" layoutX="105.0" layoutY="104.0" prefHeight="26.0" prefWidth="190.0" />
+                  <Label layoutX="7.0" layoutY="107.0" prefHeight="20.0" prefWidth="92.0" text="Subject Name:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtSemester" layoutX="105.0" layoutY="161.0" prefHeight="26.0" prefWidth="190.0" />
+                  <Label layoutX="34.0" layoutY="164.0" prefHeight="20.0" prefWidth="61.0" text="Semester:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtClass" layoutX="103.0" layoutY="216.0" prefHeight="26.0" prefWidth="190.0" />
+                  <Label layoutX="58.0" layoutY="219.0" prefHeight="20.0" prefWidth="37.0" text="Class:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnAdd" layoutX="124.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="62.0" prefWidth="78.0" text="Add" />
+                  <TextField fx:id="txtTeacherID" layoutX="103.0" layoutY="271.0" prefHeight="26.0" prefWidth="190.0" />
+                  <Label layoutX="26.0" layoutY="274.0" prefHeight="20.0" prefWidth="70.0" text="Teacher ID:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="367.0" layoutY="90.0" prefHeight="422.0" prefWidth="773.0" style="-fx-border-color: #334db3; -fx-border-width: 2;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="367.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="90.0">
+               <children>
+                  <TableView fx:id="tableTeacherSubject" layoutX="14.0" layoutY="14.0" onMouseClicked="#getItem" prefHeight="394.0" prefWidth="760.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                    <columns>
+                      <TableColumn fx:id="colSubjectID" prefWidth="259.199951171875" text="Subject ID" />
+                      <TableColumn fx:id="colSubjectName" prefWidth="166.4000244140625" text="Subject name" />
+                        <TableColumn fx:id="colCredit" prefWidth="313.800048828125" text="Credit" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

@@ -208,11 +208,13 @@ public class ManagerManagerController implements Initializable {
 	}
 	public void updateManager()
 	{
-		
+		String passWord = ManagerServiceImpl.getInstance().findManager(txtManagerID.getText()).getAccount().getPassword();
+		ManagerServiceImpl.getInstance().updateManager(txtManagerID.getText(), txtFirstName.getText(), txtLastName.getText(), gender(), txtEmail.getText(), passWord);
 	}
 	public void deleteManager()
 	{
-		ManagerRepositoryImpl.getInstance().remove(txtManagerID.getText());
+		Manager manager = new Manager(txtManagerID.getText(), txtFirstName.getText(),txtLastName.getText(), gender(), txtEmail.getText());
+		ManagerServiceImpl.getInstance().deleteManager(manager);
 	}
 
 	@FXML

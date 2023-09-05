@@ -1,6 +1,8 @@
 package repository;
 
 import java.util.List;
+import java.util.Set;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Expression;
@@ -14,6 +16,7 @@ import org.hibernate.Transaction;
 
 
 import model.Student;
+import model.Student_Subject;
 import utils.HibernateUtils;
 
 
@@ -67,7 +70,7 @@ public class StudentRepositoryImpl implements StudentRepository {
 	public void save(Student model) {
 		session = factory.openSession();
 	
-		session.save(model);
+		session.saveOrUpdate(model);
 		
 		Transaction tx = session.beginTransaction();
 		
@@ -114,9 +117,36 @@ public class StudentRepositoryImpl implements StudentRepository {
 	}
 		
 	
+	public void removeStudent_Subject(Student t ,Student_Subject ts) {
+		if (t.getStudent_subject().size() == 0 ) return ;
+		System.out.println(11);
+		session = factory.openSession(); //open session
 	
-	
-	
+		Set<Student_Subject> set = t.getStudent_subject();
+    	for (Student_Subject i : set) {
+    		if (i.getSubject().getSubjectId().equals(ts.getSubject().getSubjectId()) && i.getClassName().equals(ts.getClassName()) && i.getSemester().equals(ts.getSemester())) {
+    			set.remove(i);
+    			session.delete(i);
+    			System.out.println(2);
+    			break;
+    			
+    		}
+    	}
+    	System.out.println(4);
+    	session.saveOrUpdate(t);
+    	System.out.println(5);
+		Transaction tx = session.beginTransaction();
+		System.out.println(3);
+		try {
+			tx.commit();
+		} 
+		catch (HibernateException e) {
+			tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close(); // close session
+		}
+	}
 	
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })

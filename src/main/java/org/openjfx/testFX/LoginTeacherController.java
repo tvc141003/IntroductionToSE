@@ -21,8 +21,10 @@ import javafx.stage.Stage;
 import repository.ManagerAccountRepositoryImpl;
 import repository.ManagerRepositoryImpl;
 import service.ManagerServiceImpl;
+import service.StudentServiceImpl;
+import service.TeacherServiceImpl;
 
-public class LoginController {
+public class LoginTeacherController {
 
     @FXML
     private ImageView ig;
@@ -38,24 +40,27 @@ public class LoginController {
     private Scene scene;
     private Parent root;
     
-    private ManagerServiceImpl manager;
+    private static String ID;
+   
+    private TeacherServiceImpl teacher;
     
-    public LoginController() {
+    public LoginTeacherController() {
     	
     }
     public String getUserName()
     {
-    	return this.userName.getText();
+    	return this.ID;
     }
     @FXML
     public void login(ActionEvent event) throws IOException {
-    	manager = ManagerServiceImpl.getInstance();
+    	teacher = TeacherServiceImpl.getInstance();
     	String username = userName.getText();
     	String password = passWord.getText();
     	System.out.print("nguyen");
-    	if(manager.login(username, password))
+    	this.ID = username;
+    	if(teacher.login(username, password))
     	{
-    		Parent root = FXMLLoader.load(getClass().getResource("menuHomeManager.fxml"));
+    		Parent root = FXMLLoader.load(getClass().getResource("menuHomeTeacher.fxml"));
         	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         	scene = new Scene(root);
         	stage.setScene(scene);
@@ -69,7 +74,7 @@ public class LoginController {
 
     @FXML
     public void forgotPassword(ActionEvent event) throws IOException {
-    	Parent root = FXMLLoader.load(getClass().getResource("forgotPassword.fxml"));
+    	Parent root = FXMLLoader.load(getClass().getResource("forgotPasswordTeacher.fxml"));
     	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     	scene = new Scene(root);
     	stage.setScene(scene);

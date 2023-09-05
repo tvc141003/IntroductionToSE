@@ -202,15 +202,18 @@ public class ManagerTeacherController implements Initializable {
 	public void addTeacher()
 	{
 		Teacher teacher = new Teacher(txtTeacherID.getText(), txtFirstName.getText(), txtLastName.getText(), gender(), txtEmail.getText());
-		TeacherRepositoryImpl.getInstance().save(teacher);
+		ManagerServiceImpl.getInstance().createTeacher(teacher);
+		//ManagerServiceImpl.getInstance().createTeacher(teacher);
 	}
 	public void updateTeacher()
 	{
-		
+		String passWord = ManagerServiceImpl.getInstance().findTeacher(txtTeacherID.getText()).getAccount().getPassword();
+		ManagerServiceImpl.getInstance().updateTeacher(txtTeacherID.getText(), txtFirstName.getText(), txtLastName.getText(), gender(), txtEmail.getText(), passWord);
 	}
 	public void deleteTeacher()
 	{
-		TeacherRepositoryImpl.getInstance().remove(txtTeacherID.getText());
+		Teacher teacher = new Teacher(txtTeacherID.getText(), txtFirstName.getText(), txtLastName.getText(), gender(), txtEmail.getText());
+		ManagerServiceImpl.getInstance().deleteTeacher(teacher);
 	}
 
 	@FXML

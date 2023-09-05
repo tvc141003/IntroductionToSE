@@ -1,3 +1,4 @@
+
 package service;
 
 import java.util.List;
@@ -14,10 +15,6 @@ public interface ManagerService extends Service{
 	boolean login(String id, String password);
 	boolean forgotPassword(String id, String email);
 	boolean changePassword(Object origin, String password);
-	boolean joinSubject(Subject subject, Object origin );
-	boolean outSubject(Subject subject, Object origin);
-	List<Subject> viewSubject(Subject subject, Object origin);
-	
 	/// manager service
 	boolean createManager(Manager manager);
 	boolean deleteManager(Object origin);
@@ -41,6 +38,7 @@ public interface ManagerService extends Service{
 	List<Teacher> viewTeacher();
 	List<Student> viewStudent();
 	List<Subject> viewSubject();
+
 	
 	Manager findManager(String id);
 	Teacher findTeacher(String id);
