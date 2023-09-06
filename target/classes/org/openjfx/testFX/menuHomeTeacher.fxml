@@ -49,7 +49,7 @@
                         <FontAwesomeIcon glyphName="LEANPUB" size="4em" text="" />
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onClickToSchedule" prefHeight="156.0" prefWidth="502.0" stylesheets="@styleButton.css" text="  Schedule " GridPane.rowIndex="1">
+                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onClickToSchedule" prefHeight="156.0" prefWidth="502.0" stylesheets="@styleButton.css" text="List Course" GridPane.rowIndex="1">
                      <graphic>
                         <FontAwesomeIcon glyphName="TABLE" size="4em" />
                      </graphic>

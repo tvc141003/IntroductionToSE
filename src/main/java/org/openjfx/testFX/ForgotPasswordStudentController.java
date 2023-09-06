@@ -8,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.DragEvent;
 import javafx.stage.Stage;
@@ -26,12 +28,60 @@ public class ForgotPasswordStudentController {
     private Parent root;
     @FXML
     public void sendMail(ActionEvent event) throws IOException{
-    	StudentServiceImpl.getInstance().forgotPassword(Username.getText(), email.getText());
-    	Parent root = FXMLLoader.load(getClass().getResource("LoginStudent.fxml"));
-    	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	scene = new Scene(root);
-    	stage.setScene(scene);
-    	stage.show();
+    	if(StudentServiceImpl.getInstance().forgotPassword(Username.getText(), email.getText()))
+    	{
+    		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Message: Send Email successfully.");
+
+            ButtonType buttonTypeOK = new ButtonType("OK");
+
+            alert.getButtonTypes().setAll(buttonTypeOK);
+
+            alert.showAndWait().ifPresent(buttonType -> {
+                if (buttonType == buttonTypeOK) {
+                	Parent root;
+					try {
+						root = FXMLLoader.load(getClass().getResource("LoginStudent.fxml"));
+						Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	                	scene = new Scene(root);
+	                	stage.setScene(scene);
+	                	stage.show();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+                }
+            });
+    	}
+    	else
+    	{
+    		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Message: Send Email Error.");
+
+            ButtonType buttonTypeOK = new ButtonType("OK");
+
+            alert.getButtonTypes().setAll(buttonTypeOK);
+
+            alert.showAndWait().ifPresent(buttonType -> {
+                if (buttonType == buttonTypeOK) {
+                	try {
+						root = FXMLLoader.load(getClass().getResource("forgotPasswordStudent.fxml"));
+						Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	                	scene = new Scene(root);
+	                	stage.setScene(scene);
+	                	stage.show();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+                }
+            });
+    	}
     }
 
 }

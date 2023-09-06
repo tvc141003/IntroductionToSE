@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import service.StudentServiceImpl;
 import javafx.scene.Node;
@@ -55,11 +57,34 @@ public class MenuHomeStudentController {
     }
     
     public void onClickToLogOut(ActionEvent event)throws IOException {
-    	Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-    	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	scene = new Scene(root);
-    	stage.setScene(scene);
-    	stage.show();
+    	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Log Out");
+        alert.setHeaderText("Are you sure sign out?");
+        alert.setContentText("Please select an option.");
+
+        ButtonType buttonTypeYes = new ButtonType("Yes");
+        ButtonType buttonTypeNo = new ButtonType("No");
+
+        alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+        alert.showAndWait().ifPresent(buttonType -> {
+            if (buttonType == buttonTypeYes) {
+            	Parent root;
+				try {
+					root = FXMLLoader.load(getClass().getResource("View.fxml"));
+					Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	            	scene = new Scene(root);
+	            	stage.setScene(scene);
+	            	stage.show();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            } else if (buttonType == buttonTypeNo) {
+                System.out.println("No selected");
+            }
+        });
     }
 }
+
 

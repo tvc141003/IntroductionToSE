@@ -63,7 +63,7 @@ public class TeacherServiceImpl implements TeacherService{
 	@Override
 	public boolean forgotPassword(String id, String email) {
 		mail = new GmailFormCheckingImpl();
-		if (mail.check(email) == true) {
+		if (mail.check(email) == true && email.equals(StudentRepositoryImpl.getInstance().findById(id).getEmail())) {
 			String password = "";
 			password = TeacherAccountRepositoryImpl.getInstance().findByUsernameId(id).getPassword();
 

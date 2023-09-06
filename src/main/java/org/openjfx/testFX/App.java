@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import model.Student;
 import model.Student_Subject;
@@ -87,6 +89,23 @@ public class App extends Application {
     	System.out.print(subject.getSubjectId());
     	Teacher_Subject ss = new Teacher_Subject(s, subject, "HK2", "21CLC06");
     	TeacherRepositoryImpl.getInstance().removeTeacher_Subject(s, ss);*/
+    	/*Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Are you sure?");
+        alert.setContentText("Please select an option.");
+
+        ButtonType buttonTypeYes = new ButtonType("Yes");
+        ButtonType buttonTypeNo = new ButtonType("No");
+
+        alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+        alert.showAndWait().ifPresent(buttonType -> {
+            if (buttonType == buttonTypeYes) {
+                System.out.println("Yes selected");
+            } else if (buttonType == buttonTypeNo) {
+                System.out.println("No selected");
+            }
+        });*/
     	launch();
     }
 

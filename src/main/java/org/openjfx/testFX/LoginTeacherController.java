@@ -12,7 +12,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -60,15 +62,57 @@ public class LoginTeacherController {
     	this.ID = username;
     	if(teacher.login(username, password))
     	{
-    		Parent root = FXMLLoader.load(getClass().getResource("menuHomeTeacher.fxml"));
-        	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        	scene = new Scene(root);
-        	stage.setScene(scene);
-        	stage.show();
+    		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Login");
+            alert.setHeaderText(null);
+            alert.setContentText("Message: Login successfully.");
+
+            ButtonType buttonTypeOK = new ButtonType("OK");
+
+            alert.getButtonTypes().setAll(buttonTypeOK);
+
+            alert.showAndWait().ifPresent(buttonType -> {
+                if (buttonType == buttonTypeOK) {
+                	Parent root;
+					try {
+						root = FXMLLoader.load(getClass().getResource("menuHomeTeacher.fxml"));
+						Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	                	scene = new Scene(root);
+	                	stage.setScene(scene);
+	                	stage.show();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+                }
+            });
     	}
     	else
     	{
-    		return;
+    		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Login");
+            alert.setHeaderText(null);
+            alert.setContentText("Message: Login successfully.");
+
+            ButtonType buttonTypeOK = new ButtonType("OK");
+
+            alert.getButtonTypes().setAll(buttonTypeOK);
+
+            alert.showAndWait().ifPresent(buttonType -> {
+                if (buttonType == buttonTypeOK) {
+                	Parent root;
+					try {
+						root = FXMLLoader.load(getClass().getResource("LoginTeacher.fxml"));
+						Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	                	scene = new Scene(root);
+	                	stage.setScene(scene);
+	                	stage.show();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+                }
+            });
     	}
     }
 

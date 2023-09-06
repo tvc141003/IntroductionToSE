@@ -67,7 +67,8 @@ public class ManagerServiceImpl implements ManagerService {
 	public boolean forgotPassword(String id, String email) {
 		System.out.print(id);
 		mail = new GmailFormCheckingImpl();
-		if (mail.check(email) == true) {
+		System.out.print(email);
+		if (mail.check(email) == true && email.equals(ManagerRepositoryImpl.getInstance().findById(id).getEmail())) {
 			System.out.print(email);
 			String password = "";
 			password = ManagerAccountRepositoryImpl.getInstance().findByUsernameId(id).getPassword();
